@@ -1,0 +1,73 @@
+import React, { useState } from 'react';
+import './index.css';
+import Board from './Board';
+
+const SIZE = 19; // 바둑판 19x19
+const emptyBoard = Array.from(new Array(SIZE), () =>
+  new Array(SIZE).fill(null)
+);
+
+const Baduk = ({ back }) => {
+  const [board, setBoard] = useState(emptyBoard);
+  const [turn, setTurn] = useState(true);
+  const [history, setHistory] = useState([]);
+
+  const onClick = (row, col) => {
+    if (board[row][col] === null) {
+      const newBoard = board.map((item) => item.slice());
+      newBoard[row][col] = turn;
+      setBoard(newBoard);
+      setHistory(
+        history.concat({
+          row: row,
+          col: col
+        })
+      );
+      setTurn(!turn);
+    }
+  };
+
+  const cancel = (event) => {
+    event.preventDefault();
+    if (history.length !== 0) {
+      const newHistory = history.slice();
+      const historyObj = newHistory.pop();
+      const newBoard = board.map((item) => item.slice());
+      newBoard[historyObj.row][historyObj.col] = null;
+      setBoard(newBoard);
+      setHistory(newHistory);
+      setTurn(!turn);
+    }
+  };
+
+  const initialize = (event) => {
+    event.preventDefault();
+    setBoard(emptyBoard);
+    setHistory([]);
+    setTurn(true);
+  };
+
+  return (
+    <div id="Baduk">
+      <div className="buttons">
+        <input type="button" value="처음으로" onClick={back} />
+        <br />
+        <input
+          type="button"
+          value="무르기"
+          onClick={cancel}
+          disabled={history.length === 0}
+        />
+        <input
+          type="button"
+          value="초기화"
+          onClick={initialize}
+          disabled={history.length === 0}
+        />
+      </div>
+      <Board board={board} onClick={onClick} onContextMenu={cancel} />
+    </div>
+  );
+};
+
+export default Baduk;
