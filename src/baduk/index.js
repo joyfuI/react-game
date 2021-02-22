@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import './index.css';
 import Board from './Board';
 
@@ -40,8 +41,7 @@ const Baduk = ({ back }) => {
     }
   };
 
-  const initialize = (event) => {
-    event.preventDefault();
+  const initialize = () => {
     setBoard(emptyBoard);
     setHistory([]);
     setTurn(true);
@@ -68,6 +68,10 @@ const Baduk = ({ back }) => {
       <Board board={board} onClick={onClick} onContextMenu={cancel} />
     </div>
   );
+};
+
+Baduk.propTypes = {
+  back: PropTypes.func
 };
 
 export default Baduk;

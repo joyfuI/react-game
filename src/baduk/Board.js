@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Board = ({ board, onClick, onContextMenu }) => {
   const jsx = board.map((row, i) =>
@@ -53,6 +54,12 @@ const Board = ({ board, onClick, onContextMenu }) => {
       {jsx}
     </div>
   );
+};
+
+Board.propTypes = {
+  board: PropTypes.arrayOf(PropTypes.array).isRequired,
+  onClick: PropTypes.func.isRequired,
+  onContextMenu: PropTypes.func
 };
 
 export default Board;
