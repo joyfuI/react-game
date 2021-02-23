@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import './index.css';
-import Board from './Board';
+import styles from './Baduk.module.css';
+import Board from '../common/Board';
 
 const SIZE = 19; // 바둑판 19x19
 const emptyBoard = Array.from(new Array(SIZE), () =>
@@ -48,8 +48,8 @@ const Baduk = ({ back }) => {
   };
 
   return (
-    <div id="Baduk">
-      <div className="buttons">
+    <div className={styles.game}>
+      <div className={styles.buttons}>
         <input type="button" value="처음으로" onClick={back} />
         <br />
         <input
@@ -65,7 +65,12 @@ const Baduk = ({ back }) => {
           disabled={history.length === 0}
         />
       </div>
-      <Board board={board} onClick={onClick} onContextMenu={cancel} />
+      <Board
+        styles={styles}
+        board={board}
+        onClick={onClick}
+        onContextMenu={cancel}
+      />
     </div>
   );
 };

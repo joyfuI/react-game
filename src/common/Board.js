@@ -1,39 +1,39 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Board = ({ board, onClick, onContextMenu }) => {
+const Board = ({ styles, board, onClick, onContextMenu }) => {
   const jsx = board.map((row, i) =>
     row.map((item, j) => {
       const className = [];
       if (i === 0) {
         if (j === 0) {
-          className.push('vertex1');
+          className.push(styles.vertex1);
         } else if (j === row.length - 1) {
-          className.push('vertex3');
+          className.push(styles.vertex3);
         } else {
-          className.push('edge2');
+          className.push(styles.edge2);
         }
       } else if (i === board.length - 1) {
         if (j === 0) {
-          className.push('vertex7');
+          className.push(styles.vertex7);
         } else if (j === row.length - 1) {
-          className.push('vertex9');
+          className.push(styles.vertex9);
         } else {
-          className.push('edge8');
+          className.push(styles.edge8);
         }
       } else {
         if (j === 0) {
-          className.push('edge4');
+          className.push(styles.edge4);
         } else if (j === row.length - 1) {
-          className.push('edge6');
+          className.push(styles.edge6);
         } else {
-          className.push('plane');
+          className.push(styles.plane);
         }
       }
       if (item === true) {
-        className.push('black');
+        className.push(styles.black);
       } else if (item === false) {
-        className.push('white');
+        className.push(styles.white);
       }
 
       return (
@@ -50,13 +50,14 @@ const Board = ({ board, onClick, onContextMenu }) => {
   jsx.forEach((item, index) => item.push(<br key={index} />));
 
   return (
-    <div className="board" onContextMenu={onContextMenu}>
+    <div className={styles.board} onContextMenu={onContextMenu}>
       {jsx}
     </div>
   );
 };
 
 Board.propTypes = {
+  styles: PropTypes.object.isRequired,
   board: PropTypes.arrayOf(PropTypes.array).isRequired,
   onClick: PropTypes.func.isRequired,
   onContextMenu: PropTypes.func
