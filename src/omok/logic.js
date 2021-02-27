@@ -150,8 +150,13 @@ export const go = (board, rule, input, turn) => {
   check();
   tmp = count(3).count(7); // 오른위쪽.왼아래쪽
   check();
-  if ((list & 1) !== 0) {
-    alert((turn ? '흑' : '백') + '의 승리입니다!!!');
+  if (
+    board.find((row) => row.find((item) => item === null) !== undefined) ===
+    undefined
+  ) {
+    alert('무승부입니다!!!');
+  } else if ((list & 1) !== 0) {
+    alert(`${turn ? '흑' : '백'}의 승리입니다!!!`);
   } else if ((list & 8) !== 0) {
     alert('3-3입니다.');
     return false;
