@@ -13,7 +13,7 @@ const Baduk = ({ back }) => {
   const [turn, setTurn] = useState(true);
   const [history, setHistory] = useState([]);
 
-  const onClick = (row, col) => {
+  const handleClick = (row, col) => {
     if (board[row][col] === null) {
       const newBoard = board.map((item) => item.slice());
       newBoard[row][col] = turn;
@@ -68,7 +68,7 @@ const Baduk = ({ back }) => {
       <Board
         styles={styles}
         board={board}
-        onClick={onClick}
+        onClick={handleClick}
         onContextMenu={cancel}
       />
     </div>

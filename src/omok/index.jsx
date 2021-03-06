@@ -64,7 +64,7 @@ const Omok = ({ back }) => {
   const [turn, setTurn] = useState(true);
   const [history, setHistory] = useState([]);
 
-  const onClick = (row, col) => {
+  const handleClick = (row, col) => {
     if (board[row][col] === null) {
       const newBoard = board.map((item) => item.slice());
       newBoard[row][col] = turn;
@@ -80,7 +80,7 @@ const Omok = ({ back }) => {
     }
   };
 
-  const onChangeSelect = (event) => {
+  const handleChangeSelect = (event) => {
     Object.values(RULE).some((value) => {
       if (event.target.value === value.name) {
         setRule(value);
@@ -90,7 +90,7 @@ const Omok = ({ back }) => {
     });
   };
 
-  const changeRule = (event) => {
+  const handleChangeRule = (event) => {
     const { target } = event;
     const newRule = deepClone(rule);
     const keys = target.value.split('.');
@@ -145,13 +145,13 @@ const Omok = ({ back }) => {
         <RuleField
           title="흑"
           color="black"
-          onChange={changeRule}
+          onChange={handleChangeRule}
           rule={rule}
           start={history.length !== 0}
         />
         <fieldset>
           <select
-            onChange={onChangeSelect}
+            onChange={handleChangeSelect}
             value={rule.name}
             disabled={history.length !== 0}
           >
@@ -175,7 +175,7 @@ const Omok = ({ back }) => {
         <RuleField
           title="백"
           color="white"
-          onChange={changeRule}
+          onChange={handleChangeRule}
           rule={rule}
           start={history.length !== 0}
         />
@@ -183,7 +183,7 @@ const Omok = ({ back }) => {
       <Board
         styles={styles}
         board={board}
-        onClick={onClick}
+        onClick={handleClick}
         onContextMenu={cancel}
       />
     </div>
