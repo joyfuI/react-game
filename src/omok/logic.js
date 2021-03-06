@@ -1,14 +1,17 @@
 /* 군대에서 짠 코드 재탕
  * 거짓금수 관련 문제가 있어서 처음부터 다시 짜려고 했는데 며칠간 고민해도 답이 안나오고 새로짠 코드가 더 문제가 많아서 그냥 재활용
  * 이게 왜 되지...? */
-export const go = (board, rule, input, turn) => {
+const go = (board, rule, input, turn) => {
+  let tmp;
+  let list = 0; // 이진수, 1: 승리, 10: 장목, '1'100: 쌍삼, '1'10000: 쌍사
+
   function count(num) {
     // 특정 방향의 돌 개수를 세는 함수
     let strict = this?.toString() ?? 1;
     let loose = this?.loose ?? 1;
     let wall = this?.wall ?? 0;
     let beyond = this?.beyond ?? 0;
-    let tmp = 0;
+    let tmp2 = 0;
     let i = input.row;
     let j = input.col;
     for (;;) {
@@ -48,11 +51,13 @@ export const go = (board, rule, input, turn) => {
           i++;
           j++;
           break;
+
+        default:
       }
-      if (tmp > 0) {
+      if (tmp2 > 0) {
         if (board[i]?.[j] === undefined) {
           // 없으면
-          if (tmp === 2) {
+          if (tmp2 === 2) {
             wall++;
           } else {
             beyond |= (beyond & 1) === 0 ? 1 : 2;
@@ -63,14 +68,14 @@ export const go = (board, rule, input, turn) => {
           break;
         } else if (board[i][j] !== turn) {
           // 다른 색이면
-          if (tmp === 2) {
+          if (tmp2 === 2) {
             wall++;
           } else {
             beyond |= (beyond & 1) === 0 ? 1 : 2;
           }
           break;
-        } else if (tmp === 1) {
-          tmp = 2;
+        } else if (tmp2 === 1) {
+          tmp2 = 2;
           beyond |= (beyond & 4) === 0 ? 4 : 8;
         }
         loose++; // 같은 색일 때
@@ -81,7 +86,7 @@ export const go = (board, rule, input, turn) => {
         break;
       } else if (board[i][j] === null) {
         // 비어 있으면
-        tmp = 1;
+        tmp2 = 1;
         continue;
       } else if (board[i][j] !== turn) {
         // 다른 색이면
@@ -92,11 +97,11 @@ export const go = (board, rule, input, turn) => {
       loose++;
     }
     return {
-      count: count, // 체이닝
-      loose: loose, // 한 칸 건너띈 것도 셌을 때
-      wall: wall, // 닫혔는지 여부
-      beyond: beyond, // 한 칸 건너띄었는지 그리고 건너띈 곳에 다른 색이 있는지. 이진수
-      toString: function () {
+      count, // 체이닝
+      loose, // 한 칸 건너띈 것도 셌을 때
+      wall, // 닫혔는지 여부
+      beyond, // 한 칸 건너띄었는지 그리고 건너띈 곳에 다른 색이 있는지. 이진수
+      toString() {
         // 돌의 개수
         return strict;
       }
@@ -130,7 +135,6 @@ export const go = (board, rule, input, turn) => {
       list |= 48;
     } else if (myRule.overline_invalidity && tmp > 5) {
       // 장목 무효
-      return;
     } else if (!myRule.overline && tmp > 5) {
       // 장목 금지
       list |= 2;
@@ -140,8 +144,6 @@ export const go = (board, rule, input, turn) => {
     }
   }
 
-  let tmp;
-  let list = 0; // 이진수, 1: 승리, 10: 장목, '1'100: 쌍삼, '1'10000: 쌍사
   tmp = count(2).count(8); // 위쪽.아래쪽
   check();
   tmp = count(4).count(6); // 왼쪽.오른쪽
@@ -169,3 +171,5 @@ export const go = (board, rule, input, turn) => {
   }
   return true;
 };
+
+export default go;

@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import styles from './Omok.module.css';
 import Board from '../common/Board';
 import RuleField from './RuleField';
-import { go } from './logic';
-import { equals } from '../common/util';
+import go from './logic';
+import { deepClone, equals } from '../common/util';
 
 const SIZE = 15; // 바둑판 19x19, 오목판 15x15
 const RULE = {
@@ -69,8 +69,8 @@ const Omok = ({ back }) => {
       const newBoard = board.map((item) => item.slice());
       newBoard[row][col] = turn;
       const input = {
-        row: row,
-        col: col
+        row,
+        col
       };
       if (go(newBoard, rule, input, turn)) {
         setBoard(newBoard);
@@ -81,34 +81,35 @@ const Omok = ({ back }) => {
   };
 
   const onChangeSelect = (event) => {
-    for (const value of Object.values(RULE)) {
+    Object.values(RULE).some((value) => {
       if (event.target.value === value.name) {
         setRule(value);
-        break;
+        return true;
       }
-    }
+      return false;
+    });
   };
 
   const changeRule = (event) => {
-    const target = event.target;
-    const newRule = JSON.parse(JSON.stringify(rule));
+    const { target } = event;
+    const newRule = deepClone(rule);
     const keys = target.value.split('.');
     newRule[keys[0]][keys[1]] =
       keys[1] === 'overline_invalidity' ? target.checked : !target.checked;
     if (keys[1] === 'overline_invalidity' && target.checked) {
-      newRule[keys[0]]['overline'] = true;
+      newRule[keys[0]].overline = true;
     } else if (keys[1] === 'overline' && target.checked) {
-      newRule[keys[0]]['overline_invalidity'] = false;
+      newRule[keys[0]].overline_invalidity = false;
     }
     newRule.name = '사용자 정의';
-    for (const key of Object.keys(RULE)) {
+    Object.keys(RULE).forEach((key) => {
       if (
         equals(newRule.black, RULE[key].black) &&
         equals(newRule.white, RULE[key].white)
       ) {
         newRule.name = RULE[key].name;
       }
-    }
+    });
     setRule(newRule);
   };
 
@@ -191,6 +192,10 @@ const Omok = ({ back }) => {
 
 Omok.propTypes = {
   back: PropTypes.func
+};
+
+Omok.defaultProps = {
+  back: () => {}
 };
 
 export default Omok;

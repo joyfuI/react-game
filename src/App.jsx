@@ -17,14 +17,22 @@ const App = () => {
       return (
         <div className="App">
           <p>
-            <a href="#" onClick={() => setGame('baduk')}>
+            <button
+              className="link-button"
+              type="button"
+              onClick={() => setGame('baduk')}
+            >
               바둑판
-            </a>
+            </button>
           </p>
           <p>
-            <a href="#" onClick={() => setGame('omok')}>
+            <button
+              className="link-button"
+              type="button"
+              onClick={() => setGame('omok')}
+            >
               오목
-            </a>
+            </button>
           </p>
         </div>
       );

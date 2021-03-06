@@ -20,8 +20,8 @@ const Baduk = ({ back }) => {
       setBoard(newBoard);
       setHistory(
         history.concat({
-          row: row,
-          col: col
+          row,
+          col
         })
       );
       setTurn(!turn);
@@ -77,6 +77,10 @@ const Baduk = ({ back }) => {
 
 Baduk.propTypes = {
   back: PropTypes.func
+};
+
+Baduk.defaultProps = {
+  back: () => {}
 };
 
 export default Baduk;
