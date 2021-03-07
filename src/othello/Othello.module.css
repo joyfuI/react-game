@@ -1,0 +1,59 @@
+.game {
+  text-align: center;
+}
+
+.buttons input {
+  margin: 10px;
+}
+
+.buttons span {
+  display: inline-block;
+  margin: 10px 50px;
+  width: 50px;
+  height: 50px;
+  font-size: 30pt;
+  line-height: 50px;
+  vertical-align: middle;
+  border: 2px none red;
+}
+
+.buttons span.black {
+  color: black;
+  background-color: gray;
+}
+
+.buttons span.white {
+  color: white;
+  background-color: gray;
+}
+
+.buttons span.highlight {
+  border-style: solid;
+}
+
+.board {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.board button {
+  margin: 0;
+  padding: 0;
+  width: 70px;
+  height: 70px;
+  font-family: 굴림;
+  font-size: 70px;
+  text-align: center;
+  line-height: 70px;
+  vertical-align: top;
+  background-color: #15CC79;
+  border: 1px solid black;
+}
+
+.board button.black {
+  color: black;
+}
+
+.board button.white {
+  color: white;
+}
