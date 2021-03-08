@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import styles from './Othello.module.css';
 import Board from '../common/Board';
 import CountField from './CountField';
@@ -16,7 +16,7 @@ const emptyBoard = (() => {
   return board;
 })();
 
-const Othello = ({ back }) => {
+const Othello = () => {
   const [board, setBoard] = useState(emptyBoard);
   const [turn, setTurn] = useState(true);
   const [history, setHistory] = useState([]);
@@ -82,7 +82,9 @@ const Othello = ({ back }) => {
   return (
     <div className={styles.game}>
       <div className={styles.buttons}>
-        <input type="button" value="처음으로" onClick={back} />
+        <Link to="/">
+          <input type="button" value="처음으로" />
+        </Link>
         <br />
         <CountField
           count={colorCount.black}
@@ -115,14 +117,6 @@ const Othello = ({ back }) => {
       />
     </div>
   );
-};
-
-Othello.propTypes = {
-  back: PropTypes.func
-};
-
-Othello.defaultProps = {
-  back: () => {}
 };
 
 export default Othello;

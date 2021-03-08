@@ -2,17 +2,11 @@
   margin: 10px;
 }
 
-.link-button {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  text-decoration: underline;
-  display: inline;
-  margin: 0;
+.App ul {
   padding: 0;
+  list-style: none;
 }
 
-.link-button:hover,
-.link-button:focus {
-  text-decoration: none;
+.App ul li {
+  margin: 10px;
 }

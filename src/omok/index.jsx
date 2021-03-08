@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import styles from './Omok.module.css';
 import Board from '../common/Board';
 import RuleField from './RuleField';
@@ -58,7 +58,7 @@ const emptyBoard = Array.from(new Array(SIZE), () =>
   new Array(SIZE).fill(null)
 );
 
-const Omok = ({ back }) => {
+const Omok = () => {
   const [board, setBoard] = useState(emptyBoard);
   const [rule, setRule] = useState(RULE.renju);
   const [turn, setTurn] = useState(true);
@@ -140,7 +140,9 @@ const Omok = ({ back }) => {
   return (
     <div className={styles.game}>
       <div className={styles.buttons}>
-        <input type="button" value="처음으로" onClick={back} />
+        <Link to="/">
+          <input type="button" value="처음으로" />
+        </Link>
         <br />
         <RuleField
           title="흑"
@@ -188,14 +190,6 @@ const Omok = ({ back }) => {
       />
     </div>
   );
-};
-
-Omok.propTypes = {
-  back: PropTypes.func
-};
-
-Omok.defaultProps = {
-  back: () => {}
 };
 
 export default Omok;

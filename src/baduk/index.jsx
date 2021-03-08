@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import styles from './Baduk.module.css';
 import Board from '../common/Board';
 
@@ -8,7 +8,7 @@ const emptyBoard = Array.from(new Array(SIZE), () =>
   new Array(SIZE).fill(null)
 );
 
-const Baduk = ({ back }) => {
+const Baduk = () => {
   const [board, setBoard] = useState(emptyBoard);
   const [turn, setTurn] = useState(true);
   const [history, setHistory] = useState([]);
@@ -50,7 +50,9 @@ const Baduk = ({ back }) => {
   return (
     <div className={styles.game}>
       <div className={styles.buttons}>
-        <input type="button" value="처음으로" onClick={back} />
+        <Link to="/">
+          <input type="button" value="처음으로" />
+        </Link>
         <br />
         <input
           type="button"
@@ -73,14 +75,6 @@ const Baduk = ({ back }) => {
       />
     </div>
   );
-};
-
-Baduk.propTypes = {
-  back: PropTypes.func
-};
-
-Baduk.defaultProps = {
-  back: () => {}
 };
 
 export default Baduk;
