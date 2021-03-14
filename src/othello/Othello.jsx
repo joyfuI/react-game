@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import styles from './Othello.module.css';
-import Board from '../common/Board';
 import CountField from './CountField';
+import HomeButton from '../common/HomeButton';
+import FnButtons from '../common/FnButtons';
+import Board from '../common/Board';
 import { count, go, pass } from './logic';
 
 const SIZE = 8; // 오델로판 8x8
@@ -81,26 +82,16 @@ const Othello = () => {
 
   return (
     <div className={styles.game}>
+      <HomeButton />
       <div className={styles.buttons}>
-        <Link to="/">
-          <input type="button" value="처음으로" />
-        </Link>
-        <br />
         <CountField
           count={colorCount.black}
           highlight={turn}
           className={styles.black}
         />
-        <input
-          type="button"
-          value="무르기"
-          onClick={cancel}
-          disabled={history.length === 0}
-        />
-        <input
-          type="button"
-          value="초기화"
-          onClick={initialize}
+        <FnButtons
+          onCancel={cancel}
+          onReset={initialize}
           disabled={history.length === 0}
         />
         <CountField

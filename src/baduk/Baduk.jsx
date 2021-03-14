@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import styles from './Baduk.module.css';
+import HomeButton from '../common/HomeButton';
+import FnButtons from '../common/FnButtons';
 import Board from '../common/Board';
 
 const SIZE = 19; // 바둑판 19x19
@@ -49,24 +50,12 @@ const Baduk = () => {
 
   return (
     <div className={styles.game}>
-      <div className={styles.buttons}>
-        <Link to="/">
-          <input type="button" value="처음으로" />
-        </Link>
-        <br />
-        <input
-          type="button"
-          value="무르기"
-          onClick={cancel}
-          disabled={history.length === 0}
-        />
-        <input
-          type="button"
-          value="초기화"
-          onClick={initialize}
-          disabled={history.length === 0}
-        />
-      </div>
+      <HomeButton />
+      <FnButtons
+        onCancel={cancel}
+        onReset={initialize}
+        disabled={history.length === 0}
+      />
       <Board
         styles={styles}
         board={board}

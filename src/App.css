@@ -10,3 +10,15 @@
 .App ul li {
   margin: 10px;
 }
+
+.HomeButton {
+  margin: 10px;
+}
+
+.FnButtons {
+  margin: 10px;
+}
+
+.FnButtons input {
+  margin: 0 10px;
+}

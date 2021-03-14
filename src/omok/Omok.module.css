@@ -2,9 +2,17 @@
   text-align: center;
 }
 
+.buttons {
+  margin: 10px;
+}
+
 .buttons fieldset {
   display: inline-block;
-  margin: 10px 30px;
+  margin: 0 30px;
+}
+
+.buttons div {
+  margin: 0 !important;
 }
 
 .buttons input[type="button"] {

@@ -2,10 +2,6 @@
   text-align: center;
 }
 
-.buttons input {
-  margin: 10px;
-}
-
 .board {
   display: inline-block;
   white-space: nowrap;

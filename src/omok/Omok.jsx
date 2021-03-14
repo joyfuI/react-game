@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import styles from './Omok.module.css';
-import Board from '../common/Board';
 import RuleField from './RuleField';
+import HomeButton from '../common/HomeButton';
+import FnButtons from '../common/FnButtons';
+import Board from '../common/Board';
 import go from './logic';
 import { deepClone, equals } from '../common/util';
 
@@ -139,11 +140,8 @@ const Omok = () => {
 
   return (
     <div className={styles.game}>
+      <HomeButton />
       <div className={styles.buttons}>
-        <Link to="/">
-          <input type="button" value="처음으로" />
-        </Link>
-        <br />
         <RuleField
           title="흑"
           color="black"
@@ -160,17 +158,9 @@ const Omok = () => {
             {ruleOptions}
             <option>사용자 정의</option>
           </select>
-          <br />
-          <input
-            type="button"
-            value="무르기"
-            onClick={cancel}
-            disabled={history.length === 0}
-          />
-          <input
-            type="button"
-            value="초기화"
-            onClick={initialize}
+          <FnButtons
+            onCancel={cancel}
+            onReset={initialize}
             disabled={history.length === 0}
           />
         </fieldset>
