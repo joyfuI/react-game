@@ -19,7 +19,7 @@ const emptyBoard = (() => {
 
 const Othello = () => {
   const [board, setBoard] = useState(emptyBoard);
-  const [turn, setTurn] = useState(true);
+  const [turn, setTurn] = useState(true); // true = 검은돌, false = 흰돌
   const [history, setHistory] = useState([]);
   const [colorCount, setColorCount] = useState(count(board));
 

@@ -62,7 +62,7 @@ const emptyBoard = Array.from(new Array(SIZE), () =>
 const Omok = () => {
   const [board, setBoard] = useState(emptyBoard);
   const [rule, setRule] = useState(RULE.renju);
-  const [turn, setTurn] = useState(true);
+  const [turn, setTurn] = useState(true); // true = 검은돌, false = 흰돌
   const [history, setHistory] = useState([]);
 
   const handleClick = (row, col) => {

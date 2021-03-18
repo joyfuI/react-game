@@ -11,7 +11,7 @@ const emptyBoard = Array.from(new Array(SIZE), () =>
 
 const Baduk = () => {
   const [board, setBoard] = useState(emptyBoard);
-  const [turn, setTurn] = useState(true);
+  const [turn, setTurn] = useState(true); // true = 검은돌, false = 흰돌
   const [history, setHistory] = useState([]);
 
   const handleClick = (row, col) => {

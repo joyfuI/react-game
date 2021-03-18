@@ -45,8 +45,7 @@ const reverse = (board, input) => {
   change = change.concat(changeArr);
 
   changeArr = [];
-  row = input.row;
-  col = input.col;
+  ({ row, col } = input);
   do {
     row--;
     col++;
@@ -54,16 +53,14 @@ const reverse = (board, input) => {
   change = change.concat(changeArr);
 
   changeArr = [];
-  row = input.row;
-  col = input.col;
+  ({ row, col } = input);
   do {
     col++;
   } while (reverseLoop(board, row, col, input.color, changeArr));
   change = change.concat(changeArr);
 
   changeArr = [];
-  row = input.row;
-  col = input.col;
+  ({ row, col } = input);
   do {
     row++;
     col++;
@@ -71,16 +68,14 @@ const reverse = (board, input) => {
   change = change.concat(changeArr);
 
   changeArr = [];
-  row = input.row;
-  col = input.col;
+  ({ row, col } = input);
   do {
     row++;
   } while (reverseLoop(board, row, col, input.color, changeArr));
   change = change.concat(changeArr);
 
   changeArr = [];
-  row = input.row;
-  col = input.col;
+  ({ row, col } = input);
   do {
     row++;
     col--;
@@ -88,16 +83,14 @@ const reverse = (board, input) => {
   change = change.concat(changeArr);
 
   changeArr = [];
-  row = input.row;
-  col = input.col;
+  ({ row, col } = input);
   do {
     col--;
   } while (reverseLoop(board, row, col, input.color, changeArr));
   change = change.concat(changeArr);
 
   changeArr = [];
-  row = input.row;
-  col = input.col;
+  ({ row, col } = input);
   do {
     row--;
     col--;
