@@ -1,7 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Board = ({ styles, board, onClick, onContextMenu }) => {
+const Board = ({
+  styles,
+  board,
+  onClick,
+  onContextMenu,
+  blackText,
+  whiteText
+}) => {
   const jsx = board.map((row, i) =>
     row.map((item, j) => {
       const className = [];
@@ -36,6 +43,15 @@ const Board = ({ styles, board, onClick, onContextMenu }) => {
         className.push(styles.white);
       }
 
+      let text;
+      if (item === null) {
+        text = null;
+      } else if (item) {
+        text = blackText;
+      } else {
+        text = whiteText;
+      }
+
       return (
         <button
           key={`${i},${j}`}
@@ -43,7 +59,7 @@ const Board = ({ styles, board, onClick, onContextMenu }) => {
           type="button"
           onClick={() => onClick(i, j)}
         >
-          {item === null ? '' : '●'}
+          {text}
         </button>
       );
     })
@@ -63,11 +79,15 @@ Board.propTypes = {
   ).isRequired,
   board: PropTypes.arrayOf(PropTypes.array).isRequired,
   onClick: PropTypes.func.isRequired,
-  onContextMenu: PropTypes.func
+  onContextMenu: PropTypes.func,
+  blackText: PropTypes.string,
+  whiteText: PropTypes.string
 };
 
 Board.defaultProps = {
-  onContextMenu: () => {}
+  onContextMenu: () => {},
+  blackText: '●',
+  whiteText: '●'
 };
 
 export default Board;

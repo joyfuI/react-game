@@ -4,6 +4,7 @@ import './App.css';
 import Baduk from './baduk';
 import Omok from './omok';
 import Othello from './othello';
+import Tictactoe from './tictactoe';
 
 const App = () => {
   const menu = () => (
@@ -18,6 +19,9 @@ const App = () => {
         <li>
           <Link to="/othello">오델로</Link>
         </li>
+        <li>
+          <Link to="/tictactoe">틱택토</Link>
+        </li>
       </ul>
     </div>
   );
@@ -28,6 +32,7 @@ const App = () => {
       <Route path="/baduk" component={Baduk} />
       <Route path="/omok" component={Omok} />
       <Route path="/othello" component={Othello} />
+      <Route path="/tictactoe" component={Tictactoe} />
       <Route>
         <Redirect to="/" />
       </Route>

@@ -1,0 +1,23 @@
+.game {
+  text-align: center;
+}
+
+.board {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.board button {
+  margin: 0;
+  padding: 0;
+  width: 90px;
+  height: 90px;
+  font-family: 굴림;
+  font-size: 90px;
+  text-align: center;
+  line-height: 90px;
+  vertical-align: top;
+  background-color: #EBEBEB;
+  border: 1px solid black;
+  color: black;
+}
