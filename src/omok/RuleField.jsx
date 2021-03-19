@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styles from './Omok.module.css';
 
-const RuleField = ({ title, color, onChange, rule, start }) => (
+const RuleField = ({ title, color, highlight, onChange, rule, start }) => (
   <fieldset>
-    <legend>{title}</legend>
+    <legend className={highlight ? styles.highlight : null}>{title}</legend>
     <label>
       <input
         type="checkbox"
@@ -51,6 +52,7 @@ const RuleField = ({ title, color, onChange, rule, start }) => (
 RuleField.propTypes = {
   title: PropTypes.string,
   color: PropTypes.string.isRequired,
+  highlight: PropTypes.bool,
   onChange: PropTypes.func,
   rule: PropTypes.shape({
     name: PropTypes.string,
@@ -72,6 +74,7 @@ RuleField.propTypes = {
 
 RuleField.defaultProps = {
   title: '',
+  highlight: false,
   onChange: () => {},
   start: false
 };

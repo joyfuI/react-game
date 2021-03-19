@@ -11,6 +11,10 @@
   margin: 0 30px;
 }
 
+.buttons legend.highlight {
+  font-weight: bold;
+}
+
 .buttons div {
   margin: 0 !important;
 }

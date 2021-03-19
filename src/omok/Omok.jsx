@@ -62,7 +62,7 @@ const emptyBoard = Array.from(new Array(SIZE), () =>
 const Omok = () => {
   const [board, setBoard] = useState(emptyBoard);
   const [rule, setRule] = useState(RULE.renju);
-  const [turn, setTurn] = useState(true); // true = 검은돌, false = 흰돌
+  const [turn, setTurn] = useState(true); // true = 흑, false = 백
   const [history, setHistory] = useState([]);
 
   const handleClick = (row, col) => {
@@ -145,6 +145,7 @@ const Omok = () => {
         <RuleField
           title="흑"
           color="black"
+          highlight={turn}
           onChange={handleChangeRule}
           rule={rule}
           start={history.length !== 0}
@@ -167,6 +168,7 @@ const Omok = () => {
         <RuleField
           title="백"
           color="white"
+          highlight={!turn}
           onChange={handleChangeRule}
           rule={rule}
           start={history.length !== 0}

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './Othello.module.css';
 
 const CountField = ({ count, highlight, className }) => (
-  <span className={`${className} ${highlight ? styles.highlight : ''}`}>
+  <span className={`${className} ${highlight ? styles.highlight : null}`}>
     {count}
   </span>
 );
