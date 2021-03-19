@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styles from './Othello.module.css';
 import CountField from './CountField';
 import HomeButton from '../common/HomeButton';
-import FnButtons from '../common/FnButtons';
+import MenuButtons from '../common/MenuButtons';
 import Board from '../common/Board';
 import { count, go, pass } from './logic';
 
@@ -89,7 +89,7 @@ const Othello = () => {
           highlight={turn}
           className={styles.black}
         />
-        <FnButtons
+        <MenuButtons
           onCancel={cancel}
           onReset={initialize}
           disabled={history.length === 0}

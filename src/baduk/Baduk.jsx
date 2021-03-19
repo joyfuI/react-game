@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './Baduk.module.css';
 import HomeButton from '../common/HomeButton';
-import FnButtons from '../common/FnButtons';
+import MenuButtons from '../common/MenuButtons';
 import Board from '../common/Board';
 
 const SIZE = 19; // 바둑판 19x19
@@ -51,7 +51,7 @@ const Baduk = () => {
   return (
     <div className={styles.game}>
       <HomeButton />
-      <FnButtons
+      <MenuButtons
         onCancel={cancel}
         onReset={initialize}
         disabled={history.length === 0}

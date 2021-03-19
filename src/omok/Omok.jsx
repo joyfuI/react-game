@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styles from './Omok.module.css';
 import RuleField from './RuleField';
 import HomeButton from '../common/HomeButton';
-import FnButtons from '../common/FnButtons';
+import MenuButtons from '../common/MenuButtons';
 import Board from '../common/Board';
 import go from './logic';
 import { deepClone, equals } from '../common/util';
@@ -159,7 +159,7 @@ const Omok = () => {
             {ruleOptions}
             <option>사용자 정의</option>
           </select>
-          <FnButtons
+          <MenuButtons
             onCancel={cancel}
             onReset={initialize}
             disabled={history.length === 0}
