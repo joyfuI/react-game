@@ -5,6 +5,7 @@ import Baduk from './baduk';
 import Omok from './omok';
 import Othello from './othello';
 import Tictactoe from './tictactoe';
+import Chess from './chess';
 
 const App = () => {
   const menu = () => (
@@ -22,6 +23,9 @@ const App = () => {
         <li>
           <Link to="/tictactoe">틱택토</Link>
         </li>
+        <li>
+          <Link to="/chess">체스</Link>
+        </li>
       </ul>
     </div>
   );
@@ -33,6 +37,7 @@ const App = () => {
       <Route path="/omok" component={Omok} />
       <Route path="/othello" component={Othello} />
       <Route path="/tictactoe" component={Tictactoe} />
+      <Route path="/chess" component={Chess} />
       <Route>
         <Redirect to="/" />
       </Route>

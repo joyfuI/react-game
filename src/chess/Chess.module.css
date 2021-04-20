@@ -1,0 +1,41 @@
+.game {
+  text-align: center;
+}
+
+.board {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.board button {
+  margin: 0;
+  padding: 0;
+  width: 80px;
+  height: 80px;
+  font-size: 70px;
+  text-align: center;
+  line-height: 80px;
+  vertical-align: top;
+  border: 1px solid orange;
+  text-shadow: 0 0 5px gray, 0 0 10px gray, 0 0 15px gray;
+}
+
+.board button:nth-child(2n) {
+  background-color: black;
+}
+
+.board button:nth-child(2n+1) {
+  background-color: white;
+}
+
+.board button.black {
+  color: black;
+}
+
+.board button.white {
+  color: white;
+}
+
+.board button.highlight {
+  background-color: #FF8080 !important;
+}
