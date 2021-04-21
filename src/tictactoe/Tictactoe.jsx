@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import styles from './Tictactoe.module.css';
-import HomeButton from '../common/HomeButton';
 import MenuButtons from '../common/MenuButtons';
 import Board from '../common/Board';
 import go from './logic';
@@ -52,7 +51,6 @@ const Tictactoe = () => {
 
   return (
     <div className={styles.game}>
-      <HomeButton />
       <MenuButtons
         onCancel={cancel}
         onReset={initialize}

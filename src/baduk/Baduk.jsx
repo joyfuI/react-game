@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import styles from './Baduk.module.css';
-import HomeButton from '../common/HomeButton';
 import MenuButtons from '../common/MenuButtons';
 import Board from '../common/Board';
 
@@ -50,7 +49,6 @@ const Baduk = () => {
 
   return (
     <div className={styles.game}>
-      <HomeButton />
       <MenuButtons
         onCancel={cancel}
         onReset={initialize}

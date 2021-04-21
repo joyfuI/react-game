@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import styles from './Chess.module.css';
-import HomeButton from '../common/HomeButton';
 import MenuButtons from '../common/MenuButtons';
 import Board from './Board';
 import * as Piece from './piece';
@@ -112,7 +111,6 @@ const Chess = () => {
         enpassant.current = null; // 앙파상 권리 잃음
         lastMove.current = 0;
       }
-      console.log(step.etc);
 
       // 실제로 기물 이동
       lastMove.current++;
@@ -195,7 +193,6 @@ const Chess = () => {
 
   return (
     <div className={styles.game}>
-      <HomeButton />
       <MenuButtons
         onCancel={cancel}
         onReset={initialize}

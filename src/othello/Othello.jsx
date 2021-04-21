@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styles from './Othello.module.css';
 import CountField from './CountField';
-import HomeButton from '../common/HomeButton';
 import MenuButtons from '../common/MenuButtons';
 import Board from '../common/Board';
 import { count, go, pass } from './logic';
@@ -82,7 +81,6 @@ const Othello = () => {
 
   return (
     <div className={styles.game}>
-      <HomeButton />
       <div className={styles.buttons}>
         <CountField
           count={colorCount.black}

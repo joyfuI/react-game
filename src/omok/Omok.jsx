@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import styles from './Omok.module.css';
 import RuleField from './RuleField';
-import HomeButton from '../common/HomeButton';
 import MenuButtons from '../common/MenuButtons';
 import Board from '../common/Board';
 import go from './logic';
@@ -140,7 +139,6 @@ const Omok = () => {
 
   return (
     <div className={styles.game}>
-      <HomeButton />
       <div className={styles.buttons}>
         <RuleField
           title="흑"
