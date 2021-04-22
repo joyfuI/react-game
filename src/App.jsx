@@ -35,71 +35,79 @@ const App = () => {
   }, [location]);
 
   const GameList = () => (
-    <div className="list" role="presentation" onClick={() => setMenu(false)}>
-      <List>
-        <Link to="/baduk">
-          <ListItem button selected={game === 'baduk'}>
-            <ListItemText primary="바둑판" />
-          </ListItem>
-        </Link>
-        <Link to="/omok">
-          <ListItem button selected={game === 'omok'}>
-            <ListItemText primary="오목" />
-          </ListItem>
-        </Link>
-        <Link to="/othello">
-          <ListItem button selected={game === 'othello'}>
-            <ListItemText primary="오델로" />
-          </ListItem>
-        </Link>
-        <Link to="/tictactoe">
-          <ListItem button selected={game === 'tictactoe'}>
-            <ListItemText primary="틱택토" />
-          </ListItem>
-        </Link>
-        <Link to="/chess">
-          <ListItem button selected={game === 'chess'}>
-            <ListItemText primary="체스" />
-          </ListItem>
-        </Link>
-      </List>
-    </div>
+    <List onClick={() => setMenu(false)}>
+      <Link to="/baduk">
+        <ListItem button selected={game === 'baduk'}>
+          <ListItemText primary="바둑판" />
+        </ListItem>
+      </Link>
+      <Link to="/omok">
+        <ListItem button selected={game === 'omok'}>
+          <ListItemText primary="오목" />
+        </ListItem>
+      </Link>
+      <Link to="/othello">
+        <ListItem button selected={game === 'othello'}>
+          <ListItemText primary="오델로" />
+        </ListItem>
+      </Link>
+      <Link to="/tictactoe">
+        <ListItem button selected={game === 'tictactoe'}>
+          <ListItemText primary="틱택토" />
+        </ListItem>
+      </Link>
+      <Link to="/chess">
+        <ListItem button selected={game === 'chess'}>
+          <ListItemText primary="체스" />
+        </ListItem>
+      </Link>
+    </List>
   );
 
   return (
     <>
-      <AppBar position="static">
+      <AppBar className="appBar" position="fixed">
         <Toolbar variant="dense">
           <IconButton
             edge="start"
             color="inherit"
-            aria-label="menu"
-            onClick={() => setMenu(true)}
+            onClick={() => setMenu(!menu)}
           >
             <Icon>menu</Icon>
           </IconButton>
           <Link to="/">
-            <Typography variant="h6" color="inherit">
+            <Typography variant="h6" noWrap>
               Game
             </Typography>
           </Link>
         </Toolbar>
       </AppBar>
-      <Drawer open={menu} onClose={game ? () => setMenu(false) : null}>
+      <Drawer
+        className="drawer"
+        open={menu}
+        classes={{
+          paper: 'drawer'
+        }}
+        onClose={game ? () => setMenu(false) : null}
+      >
+        <Toolbar variant="dense" />
         <GameList />
       </Drawer>
 
-      <Switch>
-        <Route path="/" exact />
-        <Route path="/baduk" component={Baduk} />
-        <Route path="/omok" component={Omok} />
-        <Route path="/othello" component={Othello} />
-        <Route path="/tictactoe" component={Tictactoe} />
-        <Route path="/chess" component={Chess} />
-        <Route>
-          <Redirect to="/" />
-        </Route>
-      </Switch>
+      <main className="content">
+        <Toolbar variant="dense" />
+        <Switch>
+          <Route path="/" exact />
+          <Route path="/baduk" exact component={Baduk} />
+          <Route path="/omok" exact component={Omok} />
+          <Route path="/othello" exact component={Othello} />
+          <Route path="/tictactoe" exact component={Tictactoe} />
+          <Route path="/chess" exact component={Chess} />
+          <Route>
+            <Redirect to="/" />
+          </Route>
+        </Switch>
+      </main>
     </>
   );
 };

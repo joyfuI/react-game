@@ -1,5 +1,13 @@
-.list {
-  width: 250px;
+.appBar {
+  z-index: 2000 !important;
+}
+
+.drawer {
+  width: 240px;
+}
+
+.content {
+  padding: 10px;
 }
 
 a {
