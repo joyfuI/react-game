@@ -1,25 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Box, ButtonGroup, Button } from '@material-ui/core';
 
 const MenuButtons = ({ onCancel, onReset, disabled }) => (
-  <div className="MenuButtons">
-    {onCancel ? (
-      <input
-        type="button"
-        value="무르기"
-        onClick={onCancel}
-        disabled={disabled}
-      />
-    ) : null}
-    {onReset ? (
-      <input
-        type="button"
-        value="초기화"
-        onClick={onReset}
-        disabled={disabled}
-      />
-    ) : null}
-  </div>
+  <Box className="MenuButtons">
+    <ButtonGroup variant="contained" disabled={disabled}>
+      {onCancel ? <Button onClick={onCancel}>무르기</Button> : null}
+      {onReset ? (
+        <Button color="secondary" onClick={onReset}>
+          초기화
+        </Button>
+      ) : null}
+    </ButtonGroup>
+  </Box>
 );
 
 MenuButtons.propTypes = {

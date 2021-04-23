@@ -1,5 +1,5 @@
 .appBar {
-  z-index: 2000 !important;
+  z-index: 1400 !important;
 }
 
 .drawer {
@@ -17,8 +17,4 @@ a {
 
 .MenuButtons {
   margin: 10px;
-}
-
-.MenuButtons input {
-  margin: 0 10px;
 }

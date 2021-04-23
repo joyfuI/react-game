@@ -71,7 +71,7 @@ const App = () => {
           <IconButton
             edge="start"
             color="inherit"
-            onClick={() => setMenu(!menu)}
+            onClick={game ? () => setMenu(!menu) : null}
           >
             <Icon>menu</Icon>
           </IconButton>
