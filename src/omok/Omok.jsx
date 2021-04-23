@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Box, Card, CardContent, Select, MenuItem } from '@material-ui/core';
 import styles from './Omok.module.css';
 import RuleField from './RuleField';
 import MenuButtons from '../common/MenuButtons';
@@ -134,12 +135,14 @@ const Omok = () => {
   };
 
   const ruleOptions = Object.keys(RULE).map((key) => (
-    <option key={key}>{RULE[key].name}</option>
+    <MenuItem key={key} value={RULE[key].name}>
+      {RULE[key].name}
+    </MenuItem>
   ));
 
   return (
     <div className={styles.game}>
-      <div className={styles.buttons}>
+      <Box>
         <RuleField
           title="흑"
           color="black"
@@ -148,21 +151,28 @@ const Omok = () => {
           rule={rule}
           start={history.length !== 0}
         />
-        <fieldset>
-          <select
-            onChange={handleChangeSelect}
-            value={rule.name}
-            disabled={history.length !== 0}
+        <Card className={styles.card}>
+          <CardContent
+            classes={{
+              root: styles.cardContent
+            }}
           >
-            {ruleOptions}
-            <option>사용자 정의</option>
-          </select>
-          <MenuButtons
-            onCancel={cancel}
-            onReset={initialize}
-            disabled={history.length === 0}
-          />
-        </fieldset>
+            <Select
+              value={rule.name}
+              disabled={history.length !== 0}
+              autoWidth
+              onChange={handleChangeSelect}
+            >
+              {ruleOptions}
+              <MenuItem value="사용자 정의">사용자 정의</MenuItem>
+            </Select>
+            <MenuButtons
+              onCancel={cancel}
+              onReset={initialize}
+              disabled={history.length === 0}
+            />
+          </CardContent>
+        </Card>
         <RuleField
           title="백"
           color="white"
@@ -171,7 +181,7 @@ const Omok = () => {
           rule={rule}
           start={history.length !== 0}
         />
-      </div>
+      </Box>
       <Board
         styles={styles}
         board={board}

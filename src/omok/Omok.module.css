@@ -2,29 +2,13 @@
   text-align: center;
 }
 
-.buttons {
+.card {
+  display: inline-block;
   margin: 10px;
 }
 
-.buttons fieldset {
-  display: inline-block;
-  margin: 0 30px;
-}
-
-.buttons legend.highlight {
-  font-weight: bold;
-}
-
-.buttons div {
-  margin: 0 !important;
-}
-
-.buttons input[type="button"] {
-  margin: 10px 10px 0;
-}
-
-.buttons input[type="checkbox"] {
-  margin: 3px 3px 3px 10px;
+.cardContent {
+  padding: 16px !important;
 }
 
 .board {

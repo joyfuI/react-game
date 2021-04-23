@@ -1,52 +1,73 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {
+  Card,
+  CardContent,
+  Chip,
+  FormGroup,
+  FormControlLabel,
+  Switch
+} from '@material-ui/core';
 import styles from './Omok.module.css';
 
 const RuleField = ({ title, color, highlight, onChange, rule, start }) => (
-  <fieldset>
-    <legend className={highlight ? styles.highlight : null}>{title}</legend>
-    <label>
-      <input
-        type="checkbox"
-        value={`${color}.double_three`}
-        onChange={onChange}
-        checked={!rule[color].double_three}
-        disabled={start}
-      />
-      3-3 금지
-    </label>
-    <label>
-      <input
-        type="checkbox"
-        value={`${color}.double_four`}
-        onChange={onChange}
-        checked={!rule[color].double_four}
-        disabled={start}
-      />
-      4-4 금지
-    </label>
-    <br />
-    <label>
-      <input
-        type="checkbox"
-        value={`${color}.overline_invalidity`}
-        onChange={onChange}
-        checked={rule[color].overline_invalidity}
-        disabled={start}
-      />
-      장목 무효
-    </label>
-    <label>
-      <input
-        type="checkbox"
-        value={`${color}.overline`}
-        onChange={onChange}
-        checked={!rule[color].overline}
-        disabled={start}
-      />
-      장목 금지
-    </label>
-  </fieldset>
+  <Card className={styles.card}>
+    <CardContent
+      classes={{
+        root: styles.cardContent
+      }}
+    >
+      <Chip label={title} color={highlight ? 'primary' : 'default'} />
+      <FormGroup row>
+        <FormControlLabel
+          control={
+            <Switch
+              value={`${color}.double_three`}
+              checked={!rule[color].double_three}
+              disabled={start}
+              onChange={onChange}
+            />
+          }
+          label="3-3 금지"
+        />
+        <FormControlLabel
+          control={
+            <Switch
+              value={`${color}.double_four`}
+              checked={!rule[color].double_four}
+              disabled={start}
+              onChange={onChange}
+            />
+          }
+          label="4-4 금지"
+        />
+      </FormGroup>
+      <FormGroup row>
+        <FormControlLabel
+          control={
+            <Switch
+              value={`${color}.overline_invalidity`}
+              checked={rule[color].overline_invalidity}
+              disabled={start}
+              onChange={onChange}
+            />
+          }
+          label="장목 무효"
+        />
+        <FormControlLabel
+          control={
+            <Switch
+              value={`${color}.overline`}
+              checked={!rule[color].overline}
+              disabled={start}
+              onChange={onChange}
+            />
+          }
+          label="장목 금지"
+        />
+      </FormGroup>
+    </CardContent>
+  </Card>
 );
 
 RuleField.propTypes = {
