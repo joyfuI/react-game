@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Box } from '@material-ui/core';
 import styles from './Othello.module.css';
 import CountField from './CountField';
 import MenuButtons from '../common/MenuButtons';
@@ -81,23 +82,16 @@ const Othello = () => {
 
   return (
     <div className={styles.game}>
-      <div className={styles.buttons}>
-        <CountField
-          count={colorCount.black}
-          highlight={turn}
-          className={styles.black}
-        />
+      <Box>
+        <CountField title="흑" count={colorCount.black} highlight={turn} />
         <MenuButtons
+          className={styles.menuButtons}
           onCancel={cancel}
           onReset={initialize}
           disabled={history.length === 0}
         />
-        <CountField
-          count={colorCount.white}
-          highlight={!turn}
-          className={styles.white}
-        />
-      </div>
+        <CountField title="백" count={colorCount.white} highlight={!turn} />
+      </Box>
       <Board
         styles={styles}
         board={board}

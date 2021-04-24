@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Box, ButtonGroup, Button } from '@material-ui/core';
 
-const MenuButtons = ({ onCancel, onReset, disabled }) => (
-  <Box className="MenuButtons">
+const MenuButtons = ({ className, onCancel, onReset, disabled }) => (
+  <Box className={`MenuButtons ${className}`}>
     <ButtonGroup variant="contained" disabled={disabled}>
       {onCancel ? <Button onClick={onCancel}>무르기</Button> : null}
       {onReset ? (
@@ -16,12 +16,14 @@ const MenuButtons = ({ onCancel, onReset, disabled }) => (
 );
 
 MenuButtons.propTypes = {
+  className: PropTypes.string,
   onCancel: PropTypes.func,
   onReset: PropTypes.func,
   disabled: PropTypes.bool
 };
 
 MenuButtons.defaultProps = {
+  className: '',
   onCancel: null,
   onReset: null,
   disabled: false

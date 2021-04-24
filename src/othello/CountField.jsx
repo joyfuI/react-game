@@ -1,22 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Card, CardContent, Chip, Typography } from '@material-ui/core';
 import styles from './Othello.module.css';
 
-const CountField = ({ count, highlight, className }) => (
-  <span className={`${className} ${highlight ? styles.highlight : null}`}>
-    {count}
-  </span>
+const CountField = ({ title, count, highlight }) => (
+  <Card className={styles.card} raised>
+    <CardContent
+      classes={{
+        root: styles.cardContent
+      }}
+    >
+      <Chip label={title} color={highlight ? 'primary' : 'default'} />
+      <Typography variant="h5" component="h2">
+        {count}
+      </Typography>
+    </CardContent>
+  </Card>
 );
 
 CountField.propTypes = {
+  title: PropTypes.string.isRequired,
   count: PropTypes.number.isRequired,
-  highlight: PropTypes.bool,
-  className: PropTypes.string
+  highlight: PropTypes.bool
 };
 
 CountField.defaultProps = {
-  highlight: false,
-  className: ''
+  highlight: false
 };
 
 export default CountField;

@@ -71,7 +71,7 @@ const RuleField = ({ title, color, highlight, onChange, rule, start }) => (
 );
 
 RuleField.propTypes = {
-  title: PropTypes.string,
+  title: PropTypes.string.isRequired,
   color: PropTypes.string.isRequired,
   highlight: PropTypes.bool,
   onChange: PropTypes.func,
@@ -94,7 +94,6 @@ RuleField.propTypes = {
 };
 
 RuleField.defaultProps = {
-  title: '',
   highlight: false,
   onChange: () => {},
   start: false
