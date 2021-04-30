@@ -3,7 +3,13 @@ module.exports = {
     browser: true,
     es2021: true
   },
-  extends: ['eslint:recommended', 'airbnb', 'airbnb/hooks', 'prettier'],
+  extends: [
+    'react-app',
+    'react-app/jest',
+    'airbnb',
+    'airbnb/hooks',
+    'prettier'
+  ],
   parserOptions: {
     ecmaFeatures: {
       impliedStrict: true,
@@ -12,7 +18,6 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module'
   },
-  plugins: ['react'],
   rules: {
     'no-unused-vars': 'warn', // 미사용 변수 경고. https://eslint.org/docs/rules/no-unused-vars
     'no-alert': 'off', // alert 허용. https://eslint.org/docs/rules/no-alert
