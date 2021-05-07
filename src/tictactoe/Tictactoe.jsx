@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import styles from './Tictactoe.module.css';
 import MenuButtons from '../common/MenuButtons';
 import Board from '../common/Board';
@@ -9,7 +10,7 @@ const emptyBoard = Array.from(new Array(SIZE), () =>
   new Array(SIZE).fill(null)
 );
 
-const Tictactoe = () => {
+const Tictactoe = ({ onAlert }) => {
   const [board, setBoard] = useState(emptyBoard);
   const [turn, setTurn] = useState(false); // true = O, false = X
   const [history, setHistory] = useState([]);
@@ -22,7 +23,7 @@ const Tictactoe = () => {
         row,
         col
       };
-      if (go(newBoard, input, turn)) {
+      if (go(newBoard, input, turn, onAlert)) {
         setBoard(newBoard);
         setHistory(history.concat(input));
         setTurn(!turn);
@@ -66,6 +67,14 @@ const Tictactoe = () => {
       />
     </div>
   );
+};
+
+Tictactoe.propTypes = {
+  onAlert: PropTypes.func
+};
+
+Tictactoe.defaultProps = {
+  onAlert: () => {}
 };
 
 export default Tictactoe;

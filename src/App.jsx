@@ -9,7 +9,11 @@ import {
   Drawer,
   List,
   ListItem,
-  ListItemText
+  ListItemText,
+  Dialog,
+  DialogTitle,
+  DialogActions,
+  Button
 } from '@material-ui/core';
 import './App.css';
 import Baduk from './baduk';
@@ -21,6 +25,8 @@ import Chess from './chess';
 const App = () => {
   const [menu, setMenu] = useState(false);
   const [game, setGame] = useState(null);
+  const [alertOpen, setAlertOpen] = useState(false);
+  const [alertText, setAlertText] = useState('');
 
   const location = useLocation();
 
@@ -64,6 +70,13 @@ const App = () => {
     </List>
   );
 
+  const handleAlertOpen = (msg) => {
+    setAlertText(msg);
+    setAlertOpen(true);
+  };
+
+  const handleAlertClose = () => setAlertOpen(false);
+
   return (
     <>
       <AppBar className="appBar" position="fixed">
@@ -99,15 +112,40 @@ const App = () => {
         <Switch>
           <Route path="/" exact />
           <Route path="/baduk" exact component={Baduk} />
-          <Route path="/omok" exact component={Omok} />
-          <Route path="/othello" exact component={Othello} />
-          <Route path="/tictactoe" exact component={Tictactoe} />
-          <Route path="/chess" exact component={Chess} />
+          <Route
+            path="/omok"
+            exact
+            render={() => <Omok onAlert={handleAlertOpen} />}
+          />
+          <Route
+            path="/othello"
+            exact
+            render={() => <Othello onAlert={handleAlertOpen} />}
+          />
+          <Route
+            path="/tictactoe"
+            exact
+            render={() => <Tictactoe onAlert={handleAlertOpen} />}
+          />
+          <Route
+            path="/chess"
+            exact
+            render={() => <Chess onAlert={handleAlertOpen} />}
+          />
           <Route>
             <Redirect to="/" />
           </Route>
         </Switch>
       </main>
+
+      <Dialog open={alertOpen} onClose={handleAlertClose}>
+        <DialogTitle>{alertText}</DialogTitle>
+        <DialogActions>
+          <Button onClick={handleAlertClose} color="primary" autoFocus>
+            확인
+          </Button>
+        </DialogActions>
+      </Dialog>
     </>
   );
 };

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { Box, Card, CardContent, Select, MenuItem } from '@material-ui/core';
 import styles from './Omok.module.css';
 import RuleField from './RuleField';
@@ -59,7 +60,7 @@ const emptyBoard = Array.from(new Array(SIZE), () =>
   new Array(SIZE).fill(null)
 );
 
-const Omok = () => {
+const Omok = ({ onAlert }) => {
   const [board, setBoard] = useState(emptyBoard);
   const [rule, setRule] = useState(RULE.renju);
   const [turn, setTurn] = useState(true); // true = 흑, false = 백
@@ -73,7 +74,7 @@ const Omok = () => {
         row,
         col
       };
-      if (go(newBoard, rule, input, turn)) {
+      if (go(newBoard, rule, input, turn, onAlert)) {
         setBoard(newBoard);
         setHistory(history.concat(input));
         setTurn(!turn);
@@ -190,6 +191,14 @@ const Omok = () => {
       />
     </div>
   );
+};
+
+Omok.propTypes = {
+  onAlert: PropTypes.func
+};
+
+Omok.defaultProps = {
+  onAlert: () => {}
 };
 
 export default Omok;

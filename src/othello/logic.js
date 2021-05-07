@@ -100,10 +100,10 @@ const reverse = (board, input) => {
   return change;
 };
 
-export const go = (board, input) => {
+export const go = (board, input, onAlert) => {
   const changeArr = reverse(board, input);
   if (changeArr.length === 1) {
-    alert('그 곳에 둘 수 없습니다.');
+    onAlert('그 곳에 둘 수 없습니다.');
     return [];
   }
   return changeArr;
@@ -182,7 +182,7 @@ const passCheck = (board, color) => {
   return true;
 };
 
-export const pass = (board, color) => {
+export const pass = (board, color, onAlert) => {
   const black = passCheck(board, true);
   const white = passCheck(board, false);
   if (black && white) {
@@ -190,19 +190,19 @@ export const pass = (board, color) => {
     const colorCount = count(board);
     if (colorCount.black === colorCount.white) {
       // 반반씩 먹었을 경우
-      alert('무승부입니다!!!');
+      onAlert('무승부입니다!!!');
     } else {
-      alert(
+      onAlert(
         `${colorCount.black > colorCount.white ? '흑' : '백'}의 승리입니다!!!`
       );
     }
   } else if (!color && black) {
     // 흑 패스
-    alert('흑이 둘 수 있는 곳이 없습니다.\n백의 차례로 넘어갑니다.');
+    onAlert('흑이 둘 수 있는 곳이 없습니다.\n백의 차례로 넘어갑니다.');
     return false;
   } else if (color && white) {
     // 백 패스
-    alert('백이 둘 수 있는 곳이 없습니다.\n흑의 차례로 넘어갑니다.');
+    onAlert('백이 둘 수 있는 곳이 없습니다.\n흑의 차례로 넘어갑니다.');
     return true;
   }
   return null;

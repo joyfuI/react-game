@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import styles from './Chess.module.css';
 import MenuButtons from '../common/MenuButtons';
 import Board from './Board';
@@ -42,7 +43,7 @@ const initBoard = () => {
   return board;
 };
 
-const Chess = () => {
+const Chess = ({ onAlert }) => {
   const [board, setBoard] = useState(initBoard());
   const [turn, setTurn] = useState(false); // true = 흑, false = 백
   const [history, setHistory] = useState([]);
@@ -136,7 +137,7 @@ const Chess = () => {
         lastMove.current = 0;
       }
 
-      go(select);
+      go(select, onAlert);
       setHistory(history.concat(step));
       setTurn(!turn);
     } else if (piece.color === turn) {
@@ -223,7 +224,7 @@ const Chess = () => {
     }
     board[row][col].isMove = true;
     setPromotionOpen(false);
-    go(board[row][col]);
+    go(board[row][col], onAlert);
   };
 
   return (
@@ -246,6 +247,14 @@ const Chess = () => {
       />
     </div>
   );
+};
+
+Chess.propTypes = {
+  onAlert: PropTypes.func
+};
+
+Chess.defaultProps = {
+  onAlert: () => {}
 };
 
 export default Chess;

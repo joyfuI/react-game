@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { Box } from '@material-ui/core';
 import styles from './Othello.module.css';
 import CountField from './CountField';
@@ -17,7 +18,7 @@ const emptyBoard = (() => {
   return board;
 })();
 
-const Othello = () => {
+const Othello = ({ onAlert }) => {
   const [board, setBoard] = useState(emptyBoard);
   const [turn, setTurn] = useState(true); // true = 흑, false = 백
   const [history, setHistory] = useState([]);
@@ -35,7 +36,7 @@ const Othello = () => {
         col,
         color: turn
       };
-      const changeArr = go(newBoard, input);
+      const changeArr = go(newBoard, input, onAlert);
       if (changeArr.length !== 0) {
         changeArr.forEach((change) => {
           newBoard[change.row][change.col] = turn;
@@ -46,7 +47,7 @@ const Othello = () => {
         setHistory(newHistory);
         setTurn(!turn);
       }
-      const passCheck = pass(newBoard, turn);
+      const passCheck = pass(newBoard, turn, onAlert);
       if (passCheck !== null) {
         setTurn(passCheck);
       }
@@ -100,6 +101,14 @@ const Othello = () => {
       />
     </div>
   );
+};
+
+Othello.propTypes = {
+  onAlert: PropTypes.func
+};
+
+Othello.defaultProps = {
+  onAlert: () => {}
 };
 
 export default Othello;

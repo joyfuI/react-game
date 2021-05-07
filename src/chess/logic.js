@@ -76,7 +76,7 @@ export const enpassant = { current: null };
 
 export const lastMove = { current: 0 };
 
-export const go = (piece) => {
+export const go = (piece, onAlert) => {
   const { board, color } = piece;
 
   const flag = {
@@ -122,9 +122,9 @@ export const go = (piece) => {
     // 상대방이 움직일 수 없고
     if (checkCheck({ board, color: !color })) {
       // 상대방이 체크 상태이면
-      alert(`체크메이트로 ${color ? '흑' : '백'}의 승리입니다!!!`);
+      onAlert(`체크메이트로 ${color ? '흑' : '백'}의 승리입니다!!!`);
     } else {
-      alert('스테일메이트로 무승부입니다!!!');
+      onAlert('스테일메이트로 무승부입니다!!!');
     }
   } else if (
     flag.myOther === 1 &&
@@ -133,8 +133,8 @@ export const go = (piece) => {
     flag.yourBishop + flag.yourKnight <= 1
   ) {
     // 기물이 부족하면
-    alert('기물 부족으로 무승부입니다!!!');
+    onAlert('기물 부족으로 무승부입니다!!!');
   } else if (lastMove.current >= 75) {
-    alert('75수 룰의 의해 무승부입니다!!!');
+    onAlert('75수 룰의 의해 무승부입니다!!!');
   }
 };

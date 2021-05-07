@@ -1,7 +1,7 @@
 /* 군대에서 짠 코드 재탕
  * 거짓금수 관련 문제가 있어서 처음부터 다시 짜려고 했는데 며칠간 고민해도 답이 안나오고 새로짠 코드가 더 문제가 많아서 그냥 재활용
  * 이게 왜 되지...? */
-const go = (board, rule, input, turn) => {
+const go = (board, rule, input, turn, onAlert) => {
   let tmp;
   let list = 0; // 이진수, 1: 승리, 10: 장목, '1'100: 쌍삼, '1'10000: 쌍사
 
@@ -156,17 +156,17 @@ const go = (board, rule, input, turn) => {
     board.find((row) => row.find((item) => item === null) !== undefined) ===
     undefined
   ) {
-    alert('무승부입니다!!!');
+    onAlert('무승부입니다!!!');
   } else if ((list & 1) !== 0) {
-    alert(`${turn ? '흑' : '백'}의 승리입니다!!!`);
+    onAlert(`${turn ? '흑' : '백'}의 승리입니다!!!`);
   } else if ((list & 8) !== 0) {
-    alert('3-3입니다.');
+    onAlert('3-3입니다.');
     return false;
   } else if ((list & 32) !== 0) {
-    alert('4-4입니다.');
+    onAlert('4-4입니다.');
     return false;
   } else if ((list & 2) !== 0) {
-    alert('장목입니다.');
+    onAlert('장목입니다.');
     return false;
   }
   return true;
