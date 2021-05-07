@@ -2,6 +2,16 @@
   text-align: center;
 }
 
+.avatarBlack {
+  font-size: 2rem !important;
+  color: black !important;
+}
+
+.avatarWhite {
+  font-size: 2rem !important;
+  color: white !important;
+}
+
 .board {
   display: inline-block;
   white-space: nowrap;

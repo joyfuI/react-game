@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styles from './Chess.module.css';
 import MenuButtons from '../common/MenuButtons';
 import Board from './Board';
+import PromotionModal from './PromotionModal';
 import * as Piece from './piece';
 import { go, enpassant, lastMove } from './logic';
 
@@ -46,6 +47,7 @@ const Chess = () => {
   const [turn, setTurn] = useState(false); // true = 흑, false = 백
   const [history, setHistory] = useState([]);
   const [select, setSelect] = useState(null);
+  const [promotionOpen, setPromotionOpen] = useState(false);
 
   const initSelect = () => {
     setSelect(null);
@@ -110,6 +112,11 @@ const Chess = () => {
         step.etc = select.isMove ? 'enpassant' : 'enpassantAndFirstMove';
         enpassant.current = null; // 앙파상 권리 잃음
         lastMove.current = 0;
+      }
+
+      if (select instanceof Piece.Pawn && row === (turn ? SIZE - 1 : 0)) {
+        // 승진
+        setPromotionOpen(true);
       }
 
       // 실제로 기물 이동
@@ -191,6 +198,34 @@ const Chess = () => {
     lastMove.current = 0;
   };
 
+  const handleModalClick = (piece) => {
+    // 폰 이동 정보 가져옴
+    const step = history[history.length - 1];
+    const { row, col } = step.piece;
+    switch (piece) {
+      case 'queen':
+        board[row][col] = new Piece.Queen(board, row, col, !turn);
+        break;
+
+      case 'rook':
+        board[row][col] = new Piece.Rook(board, row, col, !turn);
+        break;
+
+      case 'bishop':
+        board[row][col] = new Piece.Bishop(board, row, col, !turn);
+        break;
+
+      case 'knight':
+        board[row][col] = new Piece.Knight(board, row, col, !turn);
+        break;
+
+      default:
+    }
+    board[row][col].isMove = true;
+    setPromotionOpen(false);
+    go(board[row][col]);
+  };
+
   return (
     <div className={styles.game}>
       <MenuButtons
@@ -203,6 +238,11 @@ const Chess = () => {
         board={board}
         onClick={handleClick}
         onContextMenu={cancel}
+      />
+      <PromotionModal
+        open={promotionOpen}
+        color={!turn} // 모달이 출력됐을 땐 이미 턴이 바뀐 상태이므로 색을 뒤집음
+        onClick={handleModalClick}
       />
     </div>
   );
