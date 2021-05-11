@@ -31,6 +31,7 @@ jobs:
       - name: Build
         env:
           GENERATE_SOURCEMAP: false
+          PUBLIC_URL: ${{ secrets.PUBLIC_URL }}
         run: yarn build
 
       - name: Upload FTP
