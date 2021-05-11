@@ -152,12 +152,7 @@ const go = (board, rule, input, turn, onAlert) => {
   check();
   tmp = count(3).count(7); // 오른위쪽.왼아래쪽
   check();
-  if (
-    board.find((row) => row.find((item) => item === null) !== undefined) ===
-    undefined
-  ) {
-    onAlert('무승부입니다!!!');
-  } else if ((list & 1) !== 0) {
+  if ((list & 1) !== 0) {
     onAlert(`${turn ? '흑' : '백'}의 승리입니다!!!`);
   } else if ((list & 8) !== 0) {
     onAlert('3-3입니다.');
@@ -168,6 +163,11 @@ const go = (board, rule, input, turn, onAlert) => {
   } else if ((list & 2) !== 0) {
     onAlert('장목입니다.');
     return false;
+  } else if (
+    board.find((row) => row.find((item) => item === null) !== undefined) ===
+    undefined
+  ) {
+    onAlert('무승부입니다!!!');
   }
   return true;
 };

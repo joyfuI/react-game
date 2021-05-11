@@ -95,13 +95,13 @@ const gameOver = (board, input, turn) => {
 };
 
 const go = (board, input, turn, onAlert) => {
-  if (
+  if (gameOver(board, input, turn)) {
+    onAlert(`${turn ? 'O' : 'X'}의 승리입니다!!!`);
+  } else if (
     board.find((row) => row.find((item) => item === null) !== undefined) ===
     undefined
   ) {
     onAlert('무승부입니다!!!');
-  } else if (gameOver(board, input, turn)) {
-    onAlert(`${turn ? 'O' : 'X'}의 승리입니다!!!`);
   }
   return true;
 };
