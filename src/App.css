@@ -6,6 +6,10 @@
   width: 240px;
 }
 
+.dialog {
+  z-index: 1500 !important;
+}
+
 .content {
   padding: 10px;
 }

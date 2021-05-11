@@ -79,7 +79,12 @@ const App = () => {
 
   return (
     <>
-      <AppBar className="appBar" position="fixed">
+      <AppBar
+        classes={{
+          root: 'appBar'
+        }}
+        position="fixed"
+      >
         <Toolbar variant="dense">
           <IconButton
             edge="start"
@@ -96,7 +101,6 @@ const App = () => {
         </Toolbar>
       </AppBar>
       <Drawer
-        className="drawer"
         open={menu}
         classes={{
           paper: 'drawer'
@@ -138,7 +142,14 @@ const App = () => {
         </Switch>
       </main>
 
-      <Dialog open={alertOpen} onClose={handleAlertClose}>
+      <Dialog
+        classes={{
+          root: 'dialog'
+        }}
+        open={alertOpen}
+        disableBackdropClick
+        onClose={handleAlertClose}
+      >
         <DialogTitle>{alertText}</DialogTitle>
         <DialogActions>
           <Button onClick={handleAlertClose} color="primary" autoFocus>

@@ -11,7 +11,11 @@ import {
 import styles from './Omok.module.css';
 
 const RuleField = ({ title, color, highlight, onChange, rule, start }) => (
-  <Card className={styles.card}>
+  <Card
+    classes={{
+      root: styles.card
+    }}
+  >
     <CardContent
       classes={{
         root: styles.cardContent

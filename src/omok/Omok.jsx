@@ -152,7 +152,11 @@ const Omok = ({ onAlert }) => {
           rule={rule}
           start={history.length !== 0}
         />
-        <Card className={styles.card}>
+        <Card
+          classes={{
+            root: styles.card
+          }}
+        >
           <CardContent
             classes={{
               root: styles.cardContent

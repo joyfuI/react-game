@@ -4,7 +4,12 @@ import { Card, CardContent, Chip, Typography } from '@material-ui/core';
 import styles from './Othello.module.css';
 
 const CountField = ({ title, count, highlight }) => (
-  <Card className={styles.card} raised>
+  <Card
+    classes={{
+      root: styles.card
+    }}
+    raised
+  >
     <CardContent
       classes={{
         root: styles.cardContent
