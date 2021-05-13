@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import { Card, CardContent, Chip, Typography } from '@material-ui/core';
 import styles from './Othello.module.css';

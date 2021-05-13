@@ -19,6 +19,8 @@ module.exports = {
     sourceType: 'module'
   },
   rules: {
+    'react/jsx-uses-react': 'off',
+    'react/react-in-jsx-scope': 'off',
     'no-unused-vars': 'warn', // 미사용 변수 경고. https://eslint.org/docs/rules/no-unused-vars
     'no-plusplus': 'off', // 단항연산자 허용. https://eslint.org/docs/rules/no-plusplus
     'no-bitwise': 'off', // 비트연산자 허용. https://eslint.org/docs/rules/no-bitwise

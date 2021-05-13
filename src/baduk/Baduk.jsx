@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styles from './Baduk.module.css';
 import MenuButtons from '../common/MenuButtons';
 import Board from '../common/Board';
