@@ -43,3 +43,4 @@ jobs:
           local_source_dir: "build"
           dist_target_dir: ${{ secrets.DIST_TARGET_DIR }}
           delete: "true"
+          exclude: "'^.htaccess$'"
