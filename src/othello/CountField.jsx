@@ -15,9 +15,7 @@ const CountField = ({ title, count, highlight }) => (
       }}
     >
       <Chip label={title} color={highlight ? 'primary' : 'default'} />
-      <Typography variant="h5" component="h2">
-        {count}
-      </Typography>
+      <Typography variant="h5">{count}</Typography>
     </CardContent>
   </Card>
 );

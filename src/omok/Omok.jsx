@@ -82,9 +82,9 @@ const Omok = ({ onAlert }) => {
     }
   };
 
-  const handleChangeSelect = (event) => {
+  const handleChangeSelect = ({ target }) => {
     Object.values(RULE).some((value) => {
-      if (event.target.value === value.name) {
+      if (target.value === value.name) {
         setRule(value);
         return true;
       }
@@ -92,8 +92,7 @@ const Omok = ({ onAlert }) => {
     });
   };
 
-  const handleChangeRule = (event) => {
-    const { target } = event;
+  const handleChangeRule = ({ target }) => {
     const newRule = deepClone(rule);
     const keys = target.value.split('.');
     newRule[keys[0]][keys[1]] =
