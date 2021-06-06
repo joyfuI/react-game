@@ -22,7 +22,7 @@ const Othello = ({ onAlert }) => {
   const [board, setBoard] = useState(emptyBoard);
   const [turn, setTurn] = useState(true); // true = 흑, false = 백
   const [history, setHistory] = useState([]);
-  const [colorCount, setColorCount] = useState(count(board));
+  const [colorCount, setColorCount] = useState(() => count(board));
 
   useEffect(() => {
     setColorCount(count(board));
@@ -65,9 +65,8 @@ const Othello = ({ onAlert }) => {
           setTurn(historyObj.color);
           newBoard[historyObj.row][historyObj.col] = null;
         } else {
-          newBoard[historyObj.row][historyObj.col] = !newBoard[historyObj.row][
-            historyObj.col
-          ];
+          newBoard[historyObj.row][historyObj.col] =
+            !newBoard[historyObj.row][historyObj.col];
         }
       });
       setBoard(newBoard);

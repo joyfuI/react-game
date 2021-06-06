@@ -44,7 +44,7 @@ const initBoard = () => {
 };
 
 const Chess = ({ onAlert }) => {
-  const [board, setBoard] = useState(initBoard());
+  const [board, setBoard] = useState(initBoard);
   const [turn, setTurn] = useState(false); // true = 흑, false = 백
   const [history, setHistory] = useState([]);
   const [select, setSelect] = useState(null);
