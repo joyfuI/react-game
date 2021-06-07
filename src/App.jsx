@@ -21,6 +21,7 @@ import Omok from './omok';
 import Othello from './othello';
 import Tictactoe from './tictactoe';
 import Chess from './chess';
+import Minesweeper from './minesweeper';
 
 const App = () => {
   const [menu, setMenu] = useState(false);
@@ -65,6 +66,11 @@ const App = () => {
       <Link to="/chess">
         <ListItem button selected={game === 'chess'}>
           <ListItemText primary="체스" />
+        </ListItem>
+      </Link>
+      <Link to="/minesweeper">
+        <ListItem button selected={game === 'minesweeper'}>
+          <ListItemText primary="지뢰찾기" />
         </ListItem>
       </Link>
     </List>
@@ -135,6 +141,11 @@ const App = () => {
             path="/chess"
             exact
             render={() => <Chess onAlert={handleAlertOpen} />}
+          />
+          <Route
+            path="/minesweeper"
+            exact
+            render={() => <Minesweeper onAlert={handleAlertOpen} />}
           />
           <Route>
             <Redirect to="/" />

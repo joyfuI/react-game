@@ -1,0 +1,89 @@
+.game {
+  text-align: center;
+}
+
+.card {
+  display: inline-block;
+  margin: 10px 20px;
+  vertical-align: middle;
+}
+
+.cardContent {
+  padding: 16px !important;
+}
+
+.textField {
+  width: 110px;
+}
+
+.menuButtons {
+  display: inline-block;
+}
+
+.board {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.board button {
+  margin: 0;
+  padding: 0;
+  width: 25px;
+  height: 25px;
+  font-size: 25px;
+  text-align: center;
+  line-height: 25px;
+  vertical-align: top;
+  border: 1px solid black;
+  background-color: gray;
+}
+
+.board button.open {
+  background-color: white;
+}
+
+.board button.bomb1 {
+  color: #0099FF;
+}
+
+.board button.bomb2 {
+  color: #12AF30;
+}
+
+.board button.bomb3 {
+  color: red;
+}
+
+.board button.bomb4 {
+  color: #1020FF;
+}
+
+.board button.bomb5 {
+  color: #801900;
+}
+
+.board button.bomb6 {
+  color: #009E5F;
+}
+
+.board button.bomb7 {
+  color: #C500A0;
+}
+
+.board button.bomb8 {
+  color: #FF8900;
+}
+
+.board button.bomb {
+  background-color: #FF8080;
+  font-size: 15px;
+}
+
+.board button.flag {
+  color: red;
+  font-size: 15px;
+}
+
+.tick {
+  margin-top: 10px !important;
+}
