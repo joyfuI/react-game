@@ -127,7 +127,7 @@ const Minesweeper = ({ onAlert }) => {
       );
     }
     const select = newBoard[row][col];
-    if (!select.open && !select.flag) {
+    if (start !== false && !select.open && !select.flag) {
       // 열기 전이고 깃발 표시를 하지 않은 곳 클릭
       select.open = true;
       if (select.bomb === 0) {
@@ -169,7 +169,7 @@ const Minesweeper = ({ onAlert }) => {
     }
   };
 
-  const handleContextMenu = (row, col) => {
+  const handleRightClick = (row, col) => {
     const newBoard = deepClone(board);
     const select = newBoard[row][col];
     if (start && !select.open) {
@@ -391,7 +391,7 @@ const Minesweeper = ({ onAlert }) => {
         styles={styles}
         board={board}
         onClick={handleClick}
-        onContextMenu={handleContextMenu}
+        onRightClick={handleRightClick}
         onDoubleClick={handleDoubleClick}
       />
       <Typography

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-const Board = ({ styles, board, onClick, onDoubleClick, onContextMenu }) => {
+const Board = ({ styles, board, onClick, onRightClick, onDoubleClick }) => {
   const jsx = board.map((row, i) =>
     row.map((item, j) => {
       const className = [];
@@ -35,9 +35,22 @@ const Board = ({ styles, board, onClick, onDoubleClick, onContextMenu }) => {
           type="button"
           onClick={() => onClick(i, j)}
           onDoubleClick={() => onDoubleClick(i, j)}
+          onMouseDown={(e) => {
+            if (e.button === 1) {
+              // 휠버튼 클릭했을 때 쓸데없는 동작 막기
+              e.preventDefault();
+            }
+          }}
+          onMouseUp={(e) => {
+            if (e.button === 1) {
+              // 휠버튼 클릭
+              e.preventDefault();
+              onDoubleClick(i, j);
+            }
+          }}
           onContextMenu={(e) => {
             e.preventDefault();
-            onContextMenu(i, j);
+            onRightClick(i, j);
           }}
         >
           {text}
@@ -57,7 +70,7 @@ Board.propTypes = {
   board: PropTypes.arrayOf(PropTypes.array).isRequired,
   onClick: PropTypes.func.isRequired,
   onDoubleClick: PropTypes.func.isRequired,
-  onContextMenu: PropTypes.func.isRequired
+  onRightClick: PropTypes.func.isRequired
 };
 
 export default Board;
