@@ -22,6 +22,7 @@ import Othello from './othello';
 import Tictactoe from './tictactoe';
 import Chess from './chess';
 import Minesweeper from './minesweeper';
+import Z048 from './2048';
 
 const App = () => {
   const [menu, setMenu] = useState(false);
@@ -71,6 +72,11 @@ const App = () => {
       <Link to="/minesweeper">
         <ListItem button selected={game === 'minesweeper'}>
           <ListItemText primary="지뢰찾기" />
+        </ListItem>
+      </Link>
+      <Link to="/2048">
+        <ListItem button selected={game === '2048'}>
+          <ListItemText primary="2048" />
         </ListItem>
       </Link>
     </List>
@@ -146,6 +152,11 @@ const App = () => {
             path="/minesweeper"
             exact
             render={() => <Minesweeper onAlert={handleAlertOpen} />}
+          />
+          <Route
+            path="/2048"
+            exact
+            render={() => <Z048 onAlert={handleAlertOpen} />}
           />
           <Route>
             <Redirect to="/" />
