@@ -46,12 +46,12 @@ const initBoard = ({ row: currentRow, col: currentCol }, row, col, bomb) => {
   board[currentRow][currentCol].bomb = -1;
   for (let i = 0; i < bomb; i++) {
     // 지뢰 생성
-    const randomRow = Math.floor(Math.random() * row);
-    const randomCol = Math.floor(Math.random() * col);
-    if (board[randomRow][randomCol].bomb === -1) {
-      i--;
-      continue;
-    }
+    let randomRow;
+    let randomCol;
+    do {
+      randomRow = Math.floor(Math.random() * row);
+      randomCol = Math.floor(Math.random() * col);
+    } while (board[randomRow][randomCol].bomb === -1);
     board[randomRow][randomCol].bomb = -1;
   }
   board[currentRow][currentCol].bomb = 0;
