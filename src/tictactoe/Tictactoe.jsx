@@ -31,8 +31,8 @@ const Tictactoe = ({ onAlert }) => {
     }
   };
 
-  const cancel = (event) => {
-    event.preventDefault();
+  const cancel = (e) => {
+    e.preventDefault();
     if (history.length !== 0) {
       const newHistory = history.slice();
       const historyObj = newHistory.pop();

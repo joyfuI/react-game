@@ -3,7 +3,7 @@
  * 이게 왜 되지...? */
 const go = (board, rule, input, turn, onAlert) => {
   let tmp;
-  let list = 0; // 이진수, 1: 승리, 10: 장목, '1'100: 쌍삼, '1'10000: 쌍사
+  let flag = 0; // 이진수, 1: 승리, 10: 장목, '1'100: 쌍삼, '1'10000: 쌍사
 
   function count(num) {
     // 특정 방향의 돌 개수를 세는 함수
@@ -117,7 +117,7 @@ const go = (board, rule, input, turn, onAlert) => {
       (tmp.beyond & 10) === 0
     ) {
       // 3-3 금지
-      list |= (list & 4) === 0 ? 4 : 8;
+      flag |= (flag & 4) === 0 ? 4 : 8;
     } else if (
       !myRule.double_four &&
       tmp.loose === 4 &&
@@ -125,22 +125,22 @@ const go = (board, rule, input, turn, onAlert) => {
       (tmp.beyond & 8) === 0
     ) {
       // 4-4 금지
-      list |= (list & 16) === 0 ? 16 : 32;
+      flag |= (flag & 16) === 0 ? 16 : 32;
     } else if (
       !myRule.double_four &&
       tmp + tmp.loose === 8 &&
       (tmp.beyond & 8) !== 0
     ) {
       // 생소한 모양의 4-4
-      list |= 48;
+      flag |= 48;
     } else if (myRule.overline_invalidity && tmp > 5) {
       // 장목 무효
     } else if (!myRule.overline && tmp > 5) {
       // 장목 금지
-      list |= 2;
+      flag |= 2;
     } else if (tmp >= 5) {
       // 승리
-      list |= 1;
+      flag |= 1;
     }
   }
 
@@ -152,15 +152,15 @@ const go = (board, rule, input, turn, onAlert) => {
   check();
   tmp = count(3).count(7); // 오른위쪽.왼아래쪽
   check();
-  if ((list & 1) !== 0) {
+  if ((flag & 1) !== 0) {
     onAlert(`${turn ? '흑' : '백'}의 승리입니다!!!`);
-  } else if ((list & 8) !== 0) {
+  } else if ((flag & 8) !== 0) {
     onAlert('3-3입니다.');
     return false;
-  } else if ((list & 32) !== 0) {
+  } else if ((flag & 32) !== 0) {
     onAlert('4-4입니다.');
     return false;
-  } else if ((list & 2) !== 0) {
+  } else if ((flag & 2) !== 0) {
     onAlert('장목입니다.');
     return false;
   } else if (

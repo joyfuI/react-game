@@ -152,8 +152,8 @@ const Chess = ({ onAlert }) => {
     }
   };
 
-  const cancel = (event) => {
-    event.preventDefault();
+  const cancel = (e) => {
+    e.preventDefault();
     if (history.length !== 0) {
       initSelect(); // 색칠된 거 초기화
       const newHistory = history.slice();
