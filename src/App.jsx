@@ -23,6 +23,7 @@ import Tictactoe from './tictactoe';
 import Chess from './chess';
 import Minesweeper from './minesweeper';
 import Z048 from './2048';
+import Connect6 from './connect6';
 
 const App = () => {
   const [menu, setMenu] = useState(false);
@@ -77,6 +78,11 @@ const App = () => {
       <Link to="/2048">
         <ListItem button selected={game === '2048'}>
           <ListItemText primary="2048" />
+        </ListItem>
+      </Link>
+      <Link to="/connect6">
+        <ListItem button selected={game === 'connect6'}>
+          <ListItemText primary="육목" />
         </ListItem>
       </Link>
     </List>
@@ -157,6 +163,11 @@ const App = () => {
             path="/2048"
             exact
             render={() => <Z048 onAlert={handleAlertOpen} />}
+          />
+          <Route
+            path="/connect6"
+            exact
+            render={() => <Connect6 onAlert={handleAlertOpen} />}
           />
           <Route>
             <Redirect to="/" />
