@@ -190,12 +190,15 @@ const Z048 = ({ onAlert }) => {
   );
 
   useEffect(() => {
-    document.addEventListener('keydown', handleKeyDown);
-    return () => document.removeEventListener('keydown', handleKeyDown);
+    document.body.addEventListener('keydown', handleKeyDown);
+    document.body.style.overscrollBehaviorY = 'contain';
+    return () => {
+      document.body.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overscrollBehaviorY = null;
+    };
   }, [handleKeyDown]);
 
   const handleTouchStart = (e) => {
-    e.preventDefault();
     touchStart.current = {
       clientX: e.changedTouches[0].clientX,
       clientY: e.changedTouches[0].clientY
@@ -203,13 +206,12 @@ const Z048 = ({ onAlert }) => {
   };
 
   const handleTouchEnd = (e) => {
-    e.preventDefault();
     const deltaX =
-      Math.abs(e.changedTouches[0].clientX - touchStart.current.clientX) > 50
+      Math.abs(e.changedTouches[0].clientX - touchStart.current.clientX) > 70
         ? e.changedTouches[0].clientX - touchStart.current.clientX
         : 0;
     const deltaY =
-      Math.abs(e.changedTouches[0].clientY - touchStart.current.clientY) > 50
+      Math.abs(e.changedTouches[0].clientY - touchStart.current.clientY) > 70
         ? e.changedTouches[0].clientY - touchStart.current.clientY
         : 0;
     if (!!deltaX === !!deltaY) {
