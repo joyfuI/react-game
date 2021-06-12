@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import PropTypes from 'prop-types';
 import styles from './Z048.module.css';
 import MenuButtons from '../common/MenuButtons';
@@ -25,6 +25,8 @@ const initBoard = () => {
 
 const Z048 = ({ onAlert }) => {
   const [board, setBoard] = useState(initBoard);
+
+  const touchStart = useRef({ clientX: null, clientY: null });
 
   const handleKeyDown = useCallback(
     (e) => {
@@ -192,6 +194,44 @@ const Z048 = ({ onAlert }) => {
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, [handleKeyDown]);
 
+  const handleTouchStart = (e) => {
+    e.preventDefault();
+    touchStart.current = {
+      clientX: e.changedTouches[0].clientX,
+      clientY: e.changedTouches[0].clientY
+    };
+  };
+
+  const handleTouchEnd = (e) => {
+    e.preventDefault();
+    const deltaX =
+      Math.abs(e.changedTouches[0].clientX - touchStart.current.clientX) > 50
+        ? e.changedTouches[0].clientX - touchStart.current.clientX
+        : 0;
+    const deltaY =
+      Math.abs(e.changedTouches[0].clientY - touchStart.current.clientY) > 50
+        ? e.changedTouches[0].clientY - touchStart.current.clientY
+        : 0;
+    if (!!deltaX === !!deltaY) {
+      // 움직이지 않았거나 대각선으로 움직이면 패스. XNOR
+      return;
+    }
+    if (deltaX > 0) {
+      e.keyCode = 39;
+      e.key = 'ArrowRight';
+    } else if (deltaX < 0) {
+      e.keyCode = 37;
+      e.key = 'ArrowLeft';
+    } else if (deltaY > 0) {
+      e.keyCode = 40;
+      e.key = 'ArrowDown';
+    } else if (deltaY < 0) {
+      e.keyCode = 38;
+      e.key = 'ArrowUp';
+    }
+    handleKeyDown(e);
+  };
+
   const initialize = () => {
     setBoard(initBoard());
   };
@@ -199,7 +239,12 @@ const Z048 = ({ onAlert }) => {
   return (
     <div className={styles.game}>
       <MenuButtons onReset={initialize} />
-      <Board styles={styles} board={board} />
+      <Board
+        styles={styles}
+        board={board}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      />
     </div>
   );
 };

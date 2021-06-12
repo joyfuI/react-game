@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-const Board = ({ styles, board }) => {
+const Board = ({ styles, board, onTouchStart, onTouchEnd }) => {
   const jsx = board.map((row, i) =>
     row.map((item, j) => (
       <button
@@ -14,14 +14,29 @@ const Board = ({ styles, board }) => {
   );
   jsx.forEach((item, index) => item.push(<br key={index} />));
 
-  return <div className={styles.board}>{jsx}</div>;
+  return (
+    <div
+      className={styles.board}
+      onTouchStart={onTouchStart}
+      onTouchEnd={onTouchEnd}
+    >
+      {jsx}
+    </div>
+  );
 };
 
 Board.propTypes = {
   styles: PropTypes.objectOf(
     PropTypes.oneOfType([PropTypes.string, PropTypes.number])
   ).isRequired,
-  board: PropTypes.arrayOf(PropTypes.array).isRequired
+  board: PropTypes.arrayOf(PropTypes.array).isRequired,
+  onTouchStart: PropTypes.func,
+  onTouchEnd: PropTypes.func
+};
+
+Board.defaultProps = {
+  onTouchStart: () => {},
+  onTouchEnd: () => {}
 };
 
 export default Board;
