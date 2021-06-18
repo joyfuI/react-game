@@ -191,7 +191,7 @@ const Z048 = ({ onAlert }) => {
 
   useEffect(() => {
     document.body.addEventListener('keydown', handleKeyDown);
-    document.body.style.overscrollBehaviorY = 'contain';
+    document.body.style.overscrollBehaviorY = 'none';
     return () => {
       document.body.removeEventListener('keydown', handleKeyDown);
       document.body.style.overscrollBehaviorY = null;
