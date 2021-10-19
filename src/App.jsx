@@ -93,7 +93,11 @@ const App = () => {
     setAlertOpen(true);
   };
 
-  const handleAlertClose = () => setAlertOpen(false);
+  const handleAlertClose = (e, reason) => {
+    if (reason !== 'backdropClick') {
+      setAlertOpen(false);
+    }
+  };
 
   return (
     <>
@@ -180,7 +184,6 @@ const App = () => {
           root: 'dialog'
         }}
         open={alertOpen}
-        disableBackdropClick
         onClose={handleAlertClose}
       >
         <DialogTitle>{alertText}</DialogTitle>

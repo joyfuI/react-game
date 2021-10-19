@@ -12,7 +12,7 @@ import styles from './Chess.module.css';
 import * as Piece from './piece';
 
 const PromotionModal = ({ open, color, onClick }) => (
-  <Dialog open={open} disableBackdropClick disableEscapeKeyDown>
+  <Dialog open={open} disableEscapeKeyDown>
     <DialogTitle>어떤 말로 승진하시겠습니까?</DialogTitle>
     <List>
       <ListItem button onClick={() => onClick('queen')}>
