@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { useLocation, Link, Switch, Route, Redirect } from 'react-router-dom';
+import { useState, useEffect, useCallback } from 'react';
+import { useLocation, Link, Routes, Route, Navigate } from 'react-router-dom';
 import {
   AppBar,
   Toolbar,
@@ -43,49 +43,52 @@ const App = () => {
     }
   }, [location]);
 
-  const GameList = () => (
-    <List onClick={() => setMenu(false)}>
-      <Link to="/baduk">
-        <ListItem button selected={game === 'baduk'}>
-          <ListItemText primary="바둑판" />
-        </ListItem>
-      </Link>
-      <Link to="/omok">
-        <ListItem button selected={game === 'omok'}>
-          <ListItemText primary="오목" />
-        </ListItem>
-      </Link>
-      <Link to="/othello">
-        <ListItem button selected={game === 'othello'}>
-          <ListItemText primary="오델로" />
-        </ListItem>
-      </Link>
-      <Link to="/tictactoe">
-        <ListItem button selected={game === 'tictactoe'}>
-          <ListItemText primary="틱택토" />
-        </ListItem>
-      </Link>
-      <Link to="/chess">
-        <ListItem button selected={game === 'chess'}>
-          <ListItemText primary="체스" />
-        </ListItem>
-      </Link>
-      <Link to="/minesweeper">
-        <ListItem button selected={game === 'minesweeper'}>
-          <ListItemText primary="지뢰찾기" />
-        </ListItem>
-      </Link>
-      <Link to="/2048">
-        <ListItem button selected={game === '2048'}>
-          <ListItemText primary="2048" />
-        </ListItem>
-      </Link>
-      <Link to="/connect6">
-        <ListItem button selected={game === 'connect6'}>
-          <ListItemText primary="육목" />
-        </ListItem>
-      </Link>
-    </List>
+  const GameList = useCallback(
+    () => (
+      <List onClick={() => setMenu(false)}>
+        <Link to="/baduk">
+          <ListItem button selected={game === 'baduk'}>
+            <ListItemText primary="바둑판" />
+          </ListItem>
+        </Link>
+        <Link to="/omok">
+          <ListItem button selected={game === 'omok'}>
+            <ListItemText primary="오목" />
+          </ListItem>
+        </Link>
+        <Link to="/othello">
+          <ListItem button selected={game === 'othello'}>
+            <ListItemText primary="오델로" />
+          </ListItem>
+        </Link>
+        <Link to="/tictactoe">
+          <ListItem button selected={game === 'tictactoe'}>
+            <ListItemText primary="틱택토" />
+          </ListItem>
+        </Link>
+        <Link to="/chess">
+          <ListItem button selected={game === 'chess'}>
+            <ListItemText primary="체스" />
+          </ListItem>
+        </Link>
+        <Link to="/minesweeper">
+          <ListItem button selected={game === 'minesweeper'}>
+            <ListItemText primary="지뢰찾기" />
+          </ListItem>
+        </Link>
+        <Link to="/2048">
+          <ListItem button selected={game === '2048'}>
+            <ListItemText primary="2048" />
+          </ListItem>
+        </Link>
+        <Link to="/connect6">
+          <ListItem button selected={game === 'connect6'}>
+            <ListItemText primary="육목" />
+          </ListItem>
+        </Link>
+      </List>
+    ),
+    [game]
   );
 
   const handleAlertOpen = (msg) => {
@@ -135,48 +138,30 @@ const App = () => {
 
       <main className="content">
         <Toolbar variant="dense" />
-        <Switch>
-          <Route path="/" exact />
-          <Route path="/baduk" exact component={Baduk} />
+        <Routes>
+          <Route path="/" />
+          <Route path="baduk" element={<Baduk />} />
+          <Route path="omok" element={<Omok onAlert={handleAlertOpen} />} />
           <Route
-            path="/omok"
-            exact
-            render={() => <Omok onAlert={handleAlertOpen} />}
+            path="othello"
+            element={<Othello onAlert={handleAlertOpen} />}
           />
           <Route
-            path="/othello"
-            exact
-            render={() => <Othello onAlert={handleAlertOpen} />}
+            path="tictactoe"
+            element={<Tictactoe onAlert={handleAlertOpen} />}
           />
+          <Route path="chess" element={<Chess onAlert={handleAlertOpen} />} />
           <Route
-            path="/tictactoe"
-            exact
-            render={() => <Tictactoe onAlert={handleAlertOpen} />}
+            path="minesweeper"
+            element={<Minesweeper onAlert={handleAlertOpen} />}
           />
+          <Route path="2048" element={<Z048 onAlert={handleAlertOpen} />} />
           <Route
-            path="/chess"
-            exact
-            render={() => <Chess onAlert={handleAlertOpen} />}
+            path="connect6"
+            element={<Connect6 onAlert={handleAlertOpen} />}
           />
-          <Route
-            path="/minesweeper"
-            exact
-            render={() => <Minesweeper onAlert={handleAlertOpen} />}
-          />
-          <Route
-            path="/2048"
-            exact
-            render={() => <Z048 onAlert={handleAlertOpen} />}
-          />
-          <Route
-            path="/connect6"
-            exact
-            render={() => <Connect6 onAlert={handleAlertOpen} />}
-          />
-          <Route>
-            <Redirect to="/" />
-          </Route>
-        </Switch>
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
       </main>
 
       <Dialog
