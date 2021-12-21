@@ -6,7 +6,7 @@ import {
   ListItem,
   ListItemAvatar,
   Avatar,
-  ListItemText
+  ListItemText,
 } from '@material-ui/core';
 import styles from './Chess.module.css';
 import * as Piece from './piece';
@@ -19,7 +19,7 @@ const PromotionModal = ({ open, color, onClick }) => (
         <ListItemAvatar>
           <Avatar
             classes={{
-              colorDefault: color ? styles.avatarBlack : styles.avatarWhite
+              colorDefault: color ? styles.avatarBlack : styles.avatarWhite,
             }}
           >
             {new Piece.Queen().toString()}
@@ -32,7 +32,7 @@ const PromotionModal = ({ open, color, onClick }) => (
         <ListItemAvatar>
           <Avatar
             classes={{
-              colorDefault: color ? styles.avatarBlack : styles.avatarWhite
+              colorDefault: color ? styles.avatarBlack : styles.avatarWhite,
             }}
           >
             {new Piece.Rook().toString()}
@@ -45,7 +45,7 @@ const PromotionModal = ({ open, color, onClick }) => (
         <ListItemAvatar>
           <Avatar
             classes={{
-              colorDefault: color ? styles.avatarBlack : styles.avatarWhite
+              colorDefault: color ? styles.avatarBlack : styles.avatarWhite,
             }}
           >
             {new Piece.Bishop().toString()}
@@ -58,7 +58,7 @@ const PromotionModal = ({ open, color, onClick }) => (
         <ListItemAvatar>
           <Avatar
             classes={{
-              colorDefault: color ? styles.avatarBlack : styles.avatarWhite
+              colorDefault: color ? styles.avatarBlack : styles.avatarWhite,
             }}
           >
             {new Piece.Knight().toString()}
@@ -73,7 +73,7 @@ const PromotionModal = ({ open, color, onClick }) => (
 PromotionModal.propTypes = {
   open: PropTypes.bool.isRequired,
   color: PropTypes.bool.isRequired,
-  onClick: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired,
 };
 
 export default PromotionModal;

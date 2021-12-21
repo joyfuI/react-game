@@ -86,7 +86,7 @@ export const go = (piece, onAlert) => {
     myOther: 0,
     yourBishop: 0,
     yourKnight: 0,
-    yourOther: 0
+    yourOther: 0,
   };
   board.forEach((row) =>
     row.forEach((item) => {

@@ -18,14 +18,14 @@ MenuButtons.propTypes = {
   className: PropTypes.string,
   onCancel: PropTypes.func,
   onReset: PropTypes.func,
-  disabled: PropTypes.bool
+  disabled: PropTypes.bool,
 };
 
 MenuButtons.defaultProps = {
   className: '',
   onCancel: null,
   onReset: null,
-  disabled: false
+  disabled: false,
 };
 
 export default MenuButtons;

@@ -70,7 +70,7 @@ Board.propTypes = {
   board: PropTypes.arrayOf(PropTypes.array).isRequired,
   onClick: PropTypes.func.isRequired,
   onDoubleClick: PropTypes.func.isRequired,
-  onRightClick: PropTypes.func.isRequired
+  onRightClick: PropTypes.func.isRequired,
 };
 
 export default Board;

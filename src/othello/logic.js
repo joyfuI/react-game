@@ -12,7 +12,7 @@ export const count = (board) => {
   });
   return {
     black,
-    white
+    white,
   };
 };
 
@@ -29,7 +29,7 @@ const reverseLoop = (board, row, col, color, changeRef) => {
   // 다른 색일 때
   changeRef.push({
     row,
-    col
+    col,
   });
   return true;
 };

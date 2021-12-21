@@ -21,7 +21,7 @@ const Tictactoe = ({ onAlert }) => {
       newBoard[row][col] = turn;
       const input = {
         row,
-        col
+        col,
       };
       if (go(newBoard, input, turn, onAlert)) {
         setBoard(newBoard);
@@ -70,11 +70,11 @@ const Tictactoe = ({ onAlert }) => {
 };
 
 Tictactoe.propTypes = {
-  onAlert: PropTypes.func
+  onAlert: PropTypes.func,
 };
 
 Tictactoe.defaultProps = {
-  onAlert: () => {}
+  onAlert: () => {},
 };
 
 export default Tictactoe;

@@ -34,7 +34,7 @@ const Othello = ({ onAlert }) => {
       const input = {
         row,
         col,
-        color: turn
+        color: turn,
       };
       const changeArr = go(newBoard, input, onAlert);
       if (changeArr.length !== 0) {
@@ -103,11 +103,11 @@ const Othello = ({ onAlert }) => {
 };
 
 Othello.propTypes = {
-  onAlert: PropTypes.func
+  onAlert: PropTypes.func,
 };
 
 Othello.defaultProps = {
-  onAlert: () => {}
+  onAlert: () => {},
 };
 
 export default Othello;

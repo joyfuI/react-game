@@ -6,7 +6,7 @@ const Board = ({
   onClick,
   onContextMenu,
   blackText,
-  whiteText
+  whiteText,
 }) => {
   const jsx = board.map((row, i) =>
     row.map((item, j) => {
@@ -80,13 +80,13 @@ Board.propTypes = {
   onClick: PropTypes.func.isRequired,
   onContextMenu: PropTypes.func,
   blackText: PropTypes.string,
-  whiteText: PropTypes.string
+  whiteText: PropTypes.string,
 };
 
 Board.defaultProps = {
   onContextMenu: () => {},
   blackText: '●',
-  whiteText: '●'
+  whiteText: '●',
 };
 
 export default Board;

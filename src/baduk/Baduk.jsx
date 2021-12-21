@@ -21,7 +21,7 @@ const Baduk = () => {
       setHistory(
         history.concat({
           row,
-          col
+          col,
         })
       );
       setTurn(!turn);

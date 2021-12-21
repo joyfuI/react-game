@@ -201,7 +201,7 @@ const Z048 = ({ onAlert }) => {
   const handleTouchStart = (e) => {
     touchStart.current = {
       clientX: e.changedTouches[0].clientX,
-      clientY: e.changedTouches[0].clientY
+      clientY: e.changedTouches[0].clientY,
     };
   };
 
@@ -252,11 +252,11 @@ const Z048 = ({ onAlert }) => {
 };
 
 Z048.propTypes = {
-  onAlert: PropTypes.func
+  onAlert: PropTypes.func,
 };
 
 Z048.defaultProps = {
-  onAlert: () => {}
+  onAlert: () => {},
 };
 
 export default Z048;

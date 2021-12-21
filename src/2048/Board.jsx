@@ -31,12 +31,12 @@ Board.propTypes = {
   ).isRequired,
   board: PropTypes.arrayOf(PropTypes.array).isRequired,
   onTouchStart: PropTypes.func,
-  onTouchEnd: PropTypes.func
+  onTouchEnd: PropTypes.func,
 };
 
 Board.defaultProps = {
   onTouchStart: () => {},
-  onTouchEnd: () => {}
+  onTouchEnd: () => {},
 };
 
 export default Board;

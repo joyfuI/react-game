@@ -42,11 +42,11 @@ Board.propTypes = {
   ).isRequired,
   board: PropTypes.arrayOf(PropTypes.array).isRequired,
   onClick: PropTypes.func.isRequired,
-  onContextMenu: PropTypes.func
+  onContextMenu: PropTypes.func,
 };
 
 Board.defaultProps = {
-  onContextMenu: () => {}
+  onContextMenu: () => {},
 };
 
 export default Board;

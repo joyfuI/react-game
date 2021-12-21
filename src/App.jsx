@@ -13,7 +13,7 @@ import {
   Dialog,
   DialogTitle,
   DialogActions,
-  Button
+  Button,
 } from '@material-ui/core';
 import './App.css';
 import Baduk from './baduk';
@@ -106,7 +106,7 @@ const App = () => {
     <>
       <AppBar
         classes={{
-          root: 'appBar'
+          root: 'appBar',
         }}
         position="fixed"
       >
@@ -128,7 +128,7 @@ const App = () => {
       <Drawer
         open={menu}
         classes={{
-          paper: 'drawer'
+          paper: 'drawer',
         }}
         onClose={game ? () => setMenu(false) : null}
       >
@@ -166,7 +166,7 @@ const App = () => {
 
       <Dialog
         classes={{
-          root: 'dialog'
+          root: 'dialog',
         }}
         open={alertOpen}
         onClose={handleAlertClose}

@@ -104,7 +104,7 @@ const go = (board, rule, input, turn, onAlert) => {
       toString() {
         // 돌의 개수
         return strict;
-      }
+      },
     };
   }
 

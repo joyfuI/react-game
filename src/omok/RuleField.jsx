@@ -5,19 +5,19 @@ import {
   Chip,
   FormGroup,
   FormControlLabel,
-  Switch
+  Switch,
 } from '@material-ui/core';
 import styles from './Omok.module.css';
 
 const RuleField = ({ title, color, highlight, onChange, rule, start }) => (
   <Card
     classes={{
-      root: styles.card
+      root: styles.card,
     }}
   >
     <CardContent
       classes={{
-        root: styles.cardContent
+        root: styles.cardContent,
       }}
     >
       <Chip label={title} color={highlight ? 'primary' : 'default'} />
@@ -84,22 +84,22 @@ RuleField.propTypes = {
       double_three: PropTypes.bool,
       double_four: PropTypes.bool,
       overline: PropTypes.bool,
-      overline_invalidity: PropTypes.bool
+      overline_invalidity: PropTypes.bool,
     }),
     white: PropTypes.shape({
       double_three: PropTypes.bool,
       double_four: PropTypes.bool,
       overline: PropTypes.bool,
-      overline_invalidity: PropTypes.bool
-    })
+      overline_invalidity: PropTypes.bool,
+    }),
   }).isRequired,
-  start: PropTypes.bool
+  start: PropTypes.bool,
 };
 
 RuleField.defaultProps = {
   highlight: false,
   onChange: () => {},
-  start: false
+  start: false,
 };
 
 export default RuleField;

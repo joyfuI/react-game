@@ -68,7 +68,7 @@ const Chess = ({ onAlert }) => {
         piece: select,
         from: { row: select.row, col: select.col },
         dead: null,
-        etc: null
+        etc: null,
       };
       if (!select.isMove) {
         // 처음 움직일 때
@@ -250,11 +250,11 @@ const Chess = ({ onAlert }) => {
 };
 
 Chess.propTypes = {
-  onAlert: PropTypes.func
+  onAlert: PropTypes.func,
 };
 
 Chess.defaultProps = {
-  onAlert: () => {}
+  onAlert: () => {},
 };
 
 export default Chess;

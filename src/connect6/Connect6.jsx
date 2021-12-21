@@ -22,7 +22,7 @@ const Connect6 = ({ onAlert }) => {
       newBoard[row][col] = turn;
       const input = {
         row,
-        col
+        col,
       };
       if (go(newBoard, input, turn, onAlert)) {
         setBoard(newBoard);
@@ -78,11 +78,11 @@ const Connect6 = ({ onAlert }) => {
 };
 
 Connect6.propTypes = {
-  onAlert: PropTypes.func
+  onAlert: PropTypes.func,
 };
 
 Connect6.defaultProps = {
-  onAlert: () => {}
+  onAlert: () => {},
 };
 
 export default Connect6;

@@ -16,14 +16,14 @@ const RULE = {
       double_three: true,
       double_four: true,
       overline: true,
-      overline_invalidity: true
+      overline_invalidity: true,
     },
     white: {
       double_three: true,
       double_four: true,
       overline: true,
-      overline_invalidity: true
-    }
+      overline_invalidity: true,
+    },
   },
   omok: {
     name: '일반룰',
@@ -31,14 +31,14 @@ const RULE = {
       double_three: false,
       double_four: true,
       overline: true,
-      overline_invalidity: true
+      overline_invalidity: true,
     },
     white: {
       double_three: false,
       double_four: true,
       overline: true,
-      overline_invalidity: true
-    }
+      overline_invalidity: true,
+    },
   },
   renju: {
     name: '렌주룰',
@@ -46,15 +46,15 @@ const RULE = {
       double_three: false,
       double_four: false,
       overline: false,
-      overline_invalidity: false
+      overline_invalidity: false,
     },
     white: {
       double_three: true,
       double_four: true,
       overline: true,
-      overline_invalidity: false
-    }
-  }
+      overline_invalidity: false,
+    },
+  },
 };
 const emptyBoard = Array.from(new Array(SIZE), () =>
   new Array(SIZE).fill(null)
@@ -72,7 +72,7 @@ const Omok = ({ onAlert }) => {
       newBoard[row][col] = turn;
       const input = {
         row,
-        col
+        col,
       };
       if (go(newBoard, rule, input, turn, onAlert)) {
         setBoard(newBoard);
@@ -153,12 +153,12 @@ const Omok = ({ onAlert }) => {
         />
         <Card
           classes={{
-            root: styles.card
+            root: styles.card,
           }}
         >
           <CardContent
             classes={{
-              root: styles.cardContent
+              root: styles.cardContent,
             }}
           >
             <Select
@@ -197,11 +197,11 @@ const Omok = ({ onAlert }) => {
 };
 
 Omok.propTypes = {
-  onAlert: PropTypes.func
+  onAlert: PropTypes.func,
 };
 
 Omok.defaultProps = {
-  onAlert: () => {}
+  onAlert: () => {},
 };
 
 export default Omok;

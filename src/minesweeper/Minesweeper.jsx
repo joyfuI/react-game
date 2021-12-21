@@ -7,7 +7,7 @@ import {
   Select,
   MenuItem,
   TextField,
-  Typography
+  Typography,
 } from '@material-ui/core';
 import styles from './Minesweeper.module.css';
 import MenuButtons from '../common/MenuButtons';
@@ -20,20 +20,20 @@ const DIFFICULTY = {
     name: '초급',
     rows: 9,
     cols: 9,
-    bomb: 10
+    bomb: 10,
   },
   intermediate: {
     name: '중급',
     rows: 16,
     cols: 16,
-    bomb: 40
+    bomb: 40,
   },
   advanced: {
     name: '고급',
     rows: 16,
     cols: 30,
-    bomb: 99
-  }
+    bomb: 99,
+  },
 };
 
 const emptyBoard = (row, col) =>
@@ -100,7 +100,7 @@ const Minesweeper = ({ onAlert }) => {
   const [input, setInput] = useState({
     rows: DIFFICULTY.beginning.rows,
     cols: DIFFICULTY.beginning.cols,
-    bomb: DIFFICULTY.beginning.bomb
+    bomb: DIFFICULTY.beginning.bomb,
   });
   const [bombMax, setBombMax] = useState(() =>
     Math.floor(DIFFICULTY.beginning.rows * DIFFICULTY.beginning.cols * 0.9)
@@ -249,7 +249,7 @@ const Minesweeper = ({ onAlert }) => {
         setInput({
           rows: value.rows,
           cols: value.cols,
-          bomb: value.bomb
+          bomb: value.bomb,
         });
         return true;
       }
@@ -267,7 +267,7 @@ const Minesweeper = ({ onAlert }) => {
     const [min, max, value] = [
       parseInt(target.min, 10),
       parseInt(target.max, 10),
-      parseInt(target.value, 10)
+      parseInt(target.value, 10),
     ];
     const newDifficulty = { ...difficulty };
     newDifficulty[target.name] = Math.max(min, Math.min(max, value)) || min;
@@ -291,7 +291,7 @@ const Minesweeper = ({ onAlert }) => {
     setInput({
       rows: newDifficulty.rows,
       cols: newDifficulty.cols,
-      bomb: newDifficulty.bomb
+      bomb: newDifficulty.bomb,
     });
   };
 
@@ -317,12 +317,12 @@ const Minesweeper = ({ onAlert }) => {
       <Box>
         <Card
           classes={{
-            root: styles.card
+            root: styles.card,
           }}
         >
           <CardContent
             classes={{
-              root: styles.cardContent
+              root: styles.cardContent,
             }}
           >
             <Select
@@ -337,7 +337,7 @@ const Minesweeper = ({ onAlert }) => {
             <div>
               <TextField
                 classes={{
-                  root: styles.textField
+                  root: styles.textField,
                 }}
                 name="cols"
                 type="number"
@@ -352,7 +352,7 @@ const Minesweeper = ({ onAlert }) => {
             <div>
               <TextField
                 classes={{
-                  root: styles.textField
+                  root: styles.textField,
                 }}
                 name="rows"
                 type="number"
@@ -367,7 +367,7 @@ const Minesweeper = ({ onAlert }) => {
             <div>
               <TextField
                 classes={{
-                  root: styles.textField
+                  root: styles.textField,
                 }}
                 name="bomb"
                 type="number"
@@ -396,7 +396,7 @@ const Minesweeper = ({ onAlert }) => {
       />
       <Typography
         classes={{
-          root: `${styles.tick} ${start === null ? 'display-none' : ''}`
+          root: `${styles.tick} ${start === null ? 'display-none' : ''}`,
         }}
         variant="subtitle1"
       >
@@ -410,11 +410,11 @@ const Minesweeper = ({ onAlert }) => {
 };
 
 Minesweeper.propTypes = {
-  onAlert: PropTypes.func
+  onAlert: PropTypes.func,
 };
 
 Minesweeper.defaultProps = {
-  onAlert: () => {}
+  onAlert: () => {},
 };
 
 export default Minesweeper;
