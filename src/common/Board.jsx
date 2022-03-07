@@ -76,7 +76,7 @@ Board.propTypes = {
   styles: PropTypes.objectOf(
     PropTypes.oneOfType([PropTypes.string, PropTypes.number])
   ).isRequired,
-  board: PropTypes.arrayOf(PropTypes.array).isRequired,
+  board: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.bool)).isRequired,
   onClick: PropTypes.func.isRequired,
   onContextMenu: PropTypes.func,
   blackText: PropTypes.string,

@@ -29,7 +29,7 @@ Board.propTypes = {
   styles: PropTypes.objectOf(
     PropTypes.oneOfType([PropTypes.string, PropTypes.number])
   ).isRequired,
-  board: PropTypes.arrayOf(PropTypes.array).isRequired,
+  board: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)).isRequired,
   onTouchStart: PropTypes.func,
   onTouchEnd: PropTypes.func,
 };

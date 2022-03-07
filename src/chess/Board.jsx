@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
 
+import Base from './piece/Base';
+
 const Board = ({ styles, board, onClick, onContextMenu }) => {
   const jsx = board.map((row, i) =>
     row.map((item, j) => {
@@ -40,7 +42,8 @@ Board.propTypes = {
   styles: PropTypes.objectOf(
     PropTypes.oneOfType([PropTypes.string, PropTypes.number])
   ).isRequired,
-  board: PropTypes.arrayOf(PropTypes.array).isRequired,
+  board: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.instanceOf(Base)))
+    .isRequired,
   onClick: PropTypes.func.isRequired,
   onContextMenu: PropTypes.func,
 };

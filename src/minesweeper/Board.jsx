@@ -67,7 +67,7 @@ Board.propTypes = {
   styles: PropTypes.objectOf(
     PropTypes.oneOfType([PropTypes.string, PropTypes.number])
   ).isRequired,
-  board: PropTypes.arrayOf(PropTypes.array).isRequired,
+  board: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.object)).isRequired,
   onClick: PropTypes.func.isRequired,
   onDoubleClick: PropTypes.func.isRequired,
   onRightClick: PropTypes.func.isRequired,
