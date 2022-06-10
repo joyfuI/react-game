@@ -5,5 +5,11 @@
   "editor.tabSize": 2,
   "files.autoSave": "off",
   "files.eol": "\n",
-  "files.insertFinalNewline": true
+  "files.insertFinalNewline": true,
+  "search.exclude": {
+    "**/.yarn": true,
+    "**/.pnp.*": true
+  },
+  "eslint.nodePath": ".yarn/sdks",
+  "prettier.prettierPath": ".yarn/sdks/prettier/index.js"
 }
