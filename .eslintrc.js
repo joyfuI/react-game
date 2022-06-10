@@ -3,13 +3,7 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: [
-    'react-app',
-    'react-app/jest',
-    'airbnb',
-    'airbnb/hooks',
-    'prettier',
-  ],
+  extends: ['airbnb', 'airbnb/hooks', 'prettier'],
   parserOptions: {
     ecmaFeatures: {
       impliedStrict: true,
