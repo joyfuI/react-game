@@ -2,14 +2,8 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
   "editor.formatOnPaste": true,
+  "editor.formatOnType": true,
   "editor.tabSize": 2,
-  "files.autoSave": "off",
   "files.eol": "\n",
-  "files.insertFinalNewline": true,
-  "search.exclude": {
-    "**/.yarn": true,
-    "**/.pnp.*": true
-  },
-  "eslint.nodePath": ".yarn/sdks",
-  "prettier.prettierPath": ".yarn/sdks/prettier/index.js"
+  "files.insertFinalNewline": true
 }

@@ -10,19 +10,19 @@
 
 Create React App으로 프로젝트 생성함
 
-### `yarn start`
+### `pnpm run start`
 
 개발 모드에서 앱 실행
 
-### `yarn test`
+### `pnpm run test`
 
 테스트 실행이지만 테스트 코드를 짜지 않아서 무의미...
 
-### `yarn build`
+### `pnpm run build`
 
 프로덕션 모드로 앱 빌드
 
-### `yarn eject`
+### `pnpm run eject`
 
 ## 후기
 

@@ -2,7 +2,7 @@ name: deploy
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   workflow_dispatch:
 
 jobs:
@@ -10,22 +10,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
 
       - name: Use Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: current
-          cache: yarn
+          node-version: latest
+          cache: pnpm
 
       - name: Install Dependencies
-        run: yarn install --immutable
+        run: pnpm install
 
       - name: Build
         env:
           GENERATE_SOURCEMAP: false
           PUBLIC_URL: ${{ secrets.PUBLIC_URL }}
-        run: yarn build
+        run: pnpm run build
 
       - name: Upload FTP
         uses: kevinpainchaud/simple-ftp-deploy-action@v1.2.1
@@ -33,7 +36,7 @@ jobs:
           ftp_host: ${{ secrets.FTP_HOST }}
           ftp_username: ${{ secrets.FTP_USERNAME }}
           ftp_password: ${{ secrets.FTP_PASSWORD }}
-          local_source_dir: "build"
+          local_source_dir: 'build'
           dist_target_dir: ${{ secrets.DIST_TARGET_DIR }}
-          delete: "true"
+          delete: 'true'
           exclude: "'^.htaccess$'"
